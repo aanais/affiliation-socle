@@ -1,0 +1,13 @@
+{% extends "templates/COM_main.twig" %}
+
+{% block body %}
+	<!--[if IE 9]><body id="main-body" class="ie9"><![endif]-->
+	<body id="main-body">
+		{% include "templates/_elts/TPL_header.twig" %}
+		<div class="main-container">
+			
+			{% block content %}{% endblock %}
+			{% include "templates/_elts/TPL_footer.twig" %}
+		</div>
+	</body>
+{% endblock %}

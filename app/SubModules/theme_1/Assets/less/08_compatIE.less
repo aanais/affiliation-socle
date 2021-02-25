@@ -1,0 +1,87 @@
+body {
+    &.ie9 {
+        .main_header_logo {
+            width: 20%;
+        }
+
+        #navigation {
+            width: ~"calc(80% - 5px)";
+        }
+
+        .main_header_menu_item {
+            width: ~"calc(25% - 5px)";
+        }
+
+        .main_footer_logo {
+            width: 15%;
+        }
+
+        .main_footer_about {
+            width: ~"calc(25% - 5px)";
+        }
+
+        .main_footer_nav {
+            width: ~"calc(60% - 5px)";
+        }
+
+        .main_footer_nav_item {
+            width: ~"calc(25% - 5px)";
+        }
+
+        .rub_box {
+            width: 60%;
+        }
+
+        .rub_box_accounts {
+            display: block;
+            height: 150px;
+            font-size: 0;
+        }
+
+        .rub_box_accounts_item {
+            width: 50%;
+            display: inline-block;
+            height: 100%;
+            position: relative;
+
+            a {
+                width: 50%;
+                display: inline-block;
+                height: 100%;
+                position: relative;
+            }
+        }
+
+        .rub_box_link {
+            width: 10%;
+        }
+
+        .category_accounts {
+            text-align: left;
+        }
+
+        .category_account_box {
+            width: 30%;
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 15px;
+            margin-right: 15px;
+            text-align: left;
+        }
+    }
+
+    &#landing,
+    &#landing-spe,
+    &#landing-home {
+        &.ie9 {
+            .landing_btn_container {
+                display: block;
+            }
+
+            .landing_btn {
+                display: inline-block;
+                width: 30%;
+            }
+        }
+    }
+}

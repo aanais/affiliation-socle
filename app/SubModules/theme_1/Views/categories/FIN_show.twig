@@ -1,0 +1,71 @@
+{% extends "layouts/FIN_layout.twig" %}
+
+{% block title %}
+    {% if current_menu.getCustomFields().meta_title %}
+        <title>{{ current_menu.getCustomFields().meta_title }} - {{ config.base.siteName }}</title>
+    {% else %}
+        <title>{{ current_menu.getLabel() }} - {{ config.base.siteName }}</title>
+    {% endif %}
+
+
+{% endblock %}
+
+{% block other_head %}
+    {{ parent() }}
+
+    <meta name="title" content="{{ current_menu.getLabel() }} - {{ config.base.siteName }}">
+    {% if current_menu.getCustomFields().meta_description %}
+        <meta name="description" content="{{ current_menu.getCustomFields().meta_description }}" />
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if choiceLangue %}
+        {% include 'templates/_elts/pool.twig' %}
+    {% endif %}
+
+    <div class="landing_container landing_container_cat">
+        <h1 class="title text-center">{{ t('strings.landings.category_title_email', {'account_cat' : categorie.title }) | raw }}</h1>
+
+        <div class="landing_btn_container landing_btn_container_category landing_btn_container_category_email">
+            <div class="btn_fdz landing_btn btn-fdz-big {{ squel.fdzButtonCssClass }}" id="chooseaccount" data-value="{{ t('strings.landings.btns_email.btn_1', {'category' : current_menu.getLabel()}) | raw }}">
+                <div class="landing_btn_label">
+                    <span class="semibold">{{ t('strings.landings.btns_email.btn_1', {'category' : current_menu.getLabel()}) | raw }}</span>
+                </div>
+            </div>
+
+            <div class="btn_fdz landing_btn btn-fdz-big {{ squel.fdzButtonCssClass }}" id="viewallaccount" data-value="{{ t('strings.landings.btns_email.btn_2') }}">
+                <div class="landing_btn_label">
+                    <span class="semibold">{{ t('strings.landings.btns_email.btn_2') | raw }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="landing_sheet_box">
+            {% for term in termsOfMenu %}
+                {% if term.getCustomFields.populaire %}
+                    {% if term.getCustomFields.couleur_de_fond_1 is not empty and term.getCustomFields.couleur_de_fond_2 is not empty and  term.getCustomFields.image_accueil != null %}
+                        <a style="background: linear-gradient(to bottom,  {{ term.getCustomFields.couleur_de_fond_1 }},  {{ term.getCustomFields.couleur_de_fond_2 }} )"href="/{{ current_menu.getCustomFields.url }}/{{ current_menu.getId() }}/{{ term.getSlug() }}/{{ term.getId() }}" id="{{ term.getSlug() }}" class="rub_box_accounts_item rub_box_account_item" data-value="{{ term.getLabel() }}">
+                        <img src="{{ term.getCustomFields.image_accueil }}">
+                    {% else %}
+                        <a href="/{{ current_menu.getCustomFields.url }}/{{ current_menu.getId() }}/{{ term.getSlug() }}/{{ term.getId() }}" id="{{ term.getSlug() }}" class="rub_box_accounts_item rub_box_account_item" data-value="{{ term.getLabel() }}">
+                    {% endif %}
+                    <span class="rub_box_account_item_title">{{ term.getLabel() }}</span>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div id="{{ squel.fdzButtonCssClass }}" {{ dataContinueHref }}
+             class="clear {{ squel.fdzButtonCssClass }}"
+             data-tuto-logo-ch="{{ config.base.plugin.logo.chrome }}"
+            {% for tuto in config.base.reconnaissance.findizer.tutos.toArray() %} data-tuto-management-{{ tuto }}="true"{% endfor %}>
+
+            {% if (squel.infoUser.browser != 'chrome') %}
+                <p class="text-center">
+                    <span>{{ t('strings.landings.label_install')}}</span>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

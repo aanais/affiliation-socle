@@ -1,0 +1,231 @@
+@import '_config';
+
+.card_article {
+    margin-bottom: 45px;
+    display: block;
+    transition: .5s ease-in;
+
+    &:hover {
+        transition: .5s ease-in;
+        box-shadow: 6px 6px 6px 0 rgba(0, 0, 0, 0.06);
+        text-decoration: none;
+
+        .card_article_infos_title {
+            .textParams(@mainFont, 1.250em, @hoverMainText, @bold);
+        }
+    }
+}
+
+.card_article_img {
+    width: 100%;
+    padding-top: 55%;
+    background-size: cover;
+    background-position: center;
+}
+
+.card_article_infos {
+    position: relative;
+    padding: 24px 16px 16px;
+}
+
+.card_article_infos_cat {
+    position: absolute;
+    top: -18px;
+    left: 12px;
+    height: 36px;
+    line-height: 36px;
+    .textParams(@mainFont, 0.875em, @lightText, @light);
+    padding: 0 16px;
+    text-transform: uppercase;
+}
+
+.card_article_infos_date {
+    .textParams(@mainFont, 0.688em, @mainText, @light);
+    display: block;
+}
+
+.card_article_infos_title {
+    .textParams(@mainFont, 1.250em, @mainText, @bold);
+    margin-top: 5px;
+}
+
+.card_article_infos_desc {
+    .textParams(@mainFont, 0.875em, @mainText, @regular);
+}
+
+
+.category_container {
+    padding: 30px;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
+
+    @media only screen and (max-width : @tablet) {
+        margin-top: -20%;
+    }
+
+    @media only screen and (max-width : @mobile) {
+        margin-top: -15%;
+    }
+
+    &.with_bg {
+        margin-top: -25%;
+    }
+}
+
+.title_h1 {
+    .textParams(@mainFont, 2.250em, @mainText, @bold);
+}
+
+.main_text {
+    .textParams(@mainFont, 0.875em, @mainText, @regular);
+}
+
+.category_header {
+    margin-bottom: 50px;
+}
+
+.breadcrumbs {
+    padding: 5px 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+        display: inline-block;
+        vertical-align: middle;
+
+        a, span {
+            .textParams(@mainFont, 0.688em, @mainText, @light);
+        }
+    }
+
+    li + li {
+        &::before {
+            content : ">";
+            font-size: 0.688em;
+            color: @mainText;
+            margin-right: 5px;
+        }
+    }
+}
+
+.bann_pub {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.article_container {
+    position: relative;
+
+    .label_category {
+        position: absolute;
+        top: -50px;
+        height: 36px;
+        line-height: 36px;
+        .textParams(@mainFont, 0.875em, @lightText, @light);
+        padding: 0 16px;
+        text-transform: uppercase;
+    }
+
+    .published_date {
+        .textParams(@mainFont, 0.875em, @mainText, @light);
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .body_page {
+        h2 {
+            .textParams(@mainFont, 1.250em, @hoverMainText, @bold);
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            .textParams(@mainFont, 0.875em, @mainText, @regular);
+        }
+
+        a {
+            .textParams(@mainFont, 1em, @textLink, @regular);
+        }
+
+        ul, ol {
+            padding: 0;
+            margin: 0;
+            padding-left: 40px;
+            list-style: none;
+            .textParams(@mainFont, 0.875em, @mainText, @regular);
+        }
+
+        ul {
+            li {
+                &::before {
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background-color: @textLink;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        ol {
+            counter-reset: compteListe;
+            li {
+                &::before {
+                    counter-increment: compteListe;
+                    content: counter(compteListe);
+                    width: 18px;
+                    height: 18px;
+                    border: 1px solid @textLink;
+                    border-radius: 50px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                    text-align: center;
+                    color: @textLink;
+                }
+            }
+
+            li + li {
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.spagination {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    list-style: none;
+
+    li {
+        display: inline-block;
+        vertical-align: middle;
+        width: 35px;
+        height:35px;
+        line-height: 35px;
+        border: 1px solid #a5a4a3;
+
+        a {
+            .textParams(@mainFont, 1.250em, #a5a4a3, @medium);
+        }
+
+        &:hover {
+            a {
+                .textParams(@mainFont, 1.250em, #ffa62b, @medium);
+                text-decoration: none;
+            }
+        }
+
+        &.active {
+            background-color: #ffa62b;
+            border: 1px solid #ffa62b;
+            a {
+                .textParams(@mainFont, 1.250em, #fff, @medium);
+            }
+        }
+    }
+}

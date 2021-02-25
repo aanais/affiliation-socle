@@ -1,0 +1,94 @@
+<footer class="ts-footer">
+		<div class="container">
+			<div class="row ts-gutter-30 justify-content-lg-between justify-content-center">
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-widtet">
+						<a href="/">
+                            {% if customization.logo_footer %}
+                                <img src="{{ urlApi }}{{ customization.logo_footer.url }}" alt="Logo {{ config.base.siteName }}">
+                            {% elseif customization.logo_header %}
+                                <img src="{{ urlApi }}{{ customization.logo_header.url }}" alt="Logo {{ config.base.siteName }}">
+                            {% else %}
+                                <p>{{ customization.title }}</p>
+                            {% endif %}
+                        </a>
+						<div class="widget-content">
+                            {{ customization.text_footer | raw }}
+						</div>
+					</div>
+				</div><!-- col end -->
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-widtet post-widget">
+						<h3 class="widget-title"><span>Articles les plus lus</span></h3>
+						<div class="widget-content">
+							<div class="list-post-block">
+								<ul class="list-post">
+                                    {% for article in articles %}
+                                            <li>
+                                                <div class="post-block-style media">
+                                                    <div class="post-thumb">
+                                                        <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">
+                                                            <div class="img-fluid footer-img-fluid" style="background-image: url({{ urlApi }}{{ article.image.url }})"></div>
+                                                            {# <img class="img-fluid" src="{{ urlApi }}{{ article.image.url }}" alt=""> #}
+                                                        </a>
+                                                    </div><!-- Post thumb end -->
+
+                                                    <div class="post-content media-body">
+                                                        <h4 class="post-title">
+                                                            <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">{{ article.title }}</a>
+                                                        </h4>
+                                                    </div><!-- Post content end -->
+                                                </div><!-- Post block style end -->
+                                            </li><!-- Li 1 end -->
+                                    {% endfor %}
+								</ul><!-- list-post end -->
+							</div>
+						</div>
+					</div>
+				</div><!-- col end -->
+				<div class="col-lg-3 col-md-6">
+                    {#
+					<div class="footer-widtet post-widget">
+						<div class="widget-content">
+							<div class="footer-ads">
+								<a href="#">
+									<img class="img-fluid" src="http://demo.themewinter.com/html/digiqole/images/banner-image/image6.jpg" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+                    #}
+				</div><!-- col end -->
+			</div><!-- row end -->
+		</div><!-- container end -->
+	</footer>
+
+<div class="ts-copyright">
+	<div class="container">
+		<div class="row align-items-center justify-content-between">
+			<div class="col-12 text-center">
+				<div class="copyright-content text-light">
+					<ul>
+                        {% if config.base.countryCode == "fr" %}
+                            <li>
+                                <a href="{{ t('routes./info/mentions.default') }}">Mentions Légales</a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="{{ t('routes./info/gcu.default') }}">{{ t('strings.footer.cgu') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ t('routes./info/contact.default') }}">{{ t('strings.footer.contact') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ t('routes./info/cookies.default') }}">{{ t('strings.footer.cookies') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ t('routes./info/privacy-policies.default') }}">Privacy Policies</a>
+                        </li>
+                    </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

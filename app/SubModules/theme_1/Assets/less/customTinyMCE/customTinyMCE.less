@@ -1,0 +1,38 @@
+@import '../_config';
+
+.custom_btn_1 {
+    a {
+        background-color: @buttonColor;
+        color: @lightTextColor;
+        padding: 1em;
+        display: block;
+        max-width: 20em;
+        text-align: center;
+        margin-top: 1em;
+        text-decoration: none;
+        transition: .5s ease;
+
+        &::after {
+            content: "\f0da";
+            font-family: "FontAwesome";
+            margin-left: .5em;
+            font-size: 1.5em;
+            display: inline-block;
+            vertical-align: middle;
+            transform: translateX(0);
+            transition: .5s ease;
+        }
+    }
+
+    &:hover {
+        a {
+            background-color: #4f3cf5;
+            transition: .5s ease;
+
+            &::after {
+                transform: translateX(5px);
+                transition: .5s ease;
+            }
+        }
+    }
+}

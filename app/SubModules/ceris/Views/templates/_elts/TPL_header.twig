@@ -1,0 +1,74 @@
+<header class="site-header">
+    <!-- Header content -->
+    <div class="header-main d-none d-md-block">
+        <div class="container">
+    		<div class="row row--flex row--vertical-center">
+    			<div class="col-4"></div>
+    			<div class="col-4">
+    				<div class="header-logo text-center">
+    					<a href="/">
+    						{# {% if customization.logo_header.url %}
+                                <img src="{{ urlApi }}{{ customization.logo_header.url }}" alt="Logo {{ config.base.siteName }}">
+                            {% else %}
+                                <p>{{ customization.title }}</p>
+                            {% endif %} #}
+                            <img src="/dist/img/ceris/logo.png" alt="Logo {{ config.base.siteName }}">
+    					</a>
+    				</div>
+    			</div>
+                <div class="col-4 text-right"></div>
+    		</div>
+    	</div>
+    </div><!-- Header content -->
+
+    <!-- Mobile header -->
+    <div id="atbs-ceris-mobile-header" class="mobile-header d-block d-md-none">
+    	<div class="mobile-header__inner mobile-header__inner--flex">
+            <!-- mobile logo open -->
+    		<div class="header-branding header-branding--mobile mobile-header__section text-left">
+    			<div class="header-logo header-logo--mobile flexbox__item text-left">
+                    <a href="/">
+    					{# {% if customization.logo_header.url %}
+                            <img src="{{ urlApi }}{{ customization.logo_header.url }}" alt="Logo {{ config.base.siteName }}">
+                        {% else %}
+                            <p>{{ customization.title }}</p>
+                        {% endif %} #}
+                        <img src="/dist/img/ceris/logo.png" alt="Logo {{ config.base.siteName }}">
+    				</a>
+    			</div>
+    		</div>
+            <!-- logo close -->
+    		<div class="mobile-header__section text-right">
+                <div class="flexbox has-bookmark-list">
+                    <div class="menu-icon">
+                        <a href="#atbs-ceris-offcanvas-mobile" class="offcanvas-menu-toggle mobile-header-btn js-atbs-ceris-offcanvas-toggle">
+                            <span class="mdicon--last hidden-xs"></span>
+                            <span class="visible-xs-inline-block"></span>
+                        </a>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+    </div><!-- Mobile header -->
+
+    <!-- Navigation bar -->
+    <nav class="navigation-bar navigation-bar--fullwidth navigation-custom-bg-color d-none d-md-block js-sticky-header-holder">
+    	<div class="container">
+    		<div class="navigation-bar__inner">
+                <div class="navigation-wrapper navigation-bar__section js-priority-nav text-center">
+    				<div id="main-menu" class="menu-header-container">
+                        <ul id="menu-header" class="navigation navigation--main navigation--inline">
+                            {% for category in menu.categories %}
+                                {% if category.published %}
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                        <a href="{{ t('routes./category.translation') }}/{{ category.slug }}">{{ category.title }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+    </nav>
+</header>

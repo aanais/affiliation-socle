@@ -1,0 +1,86 @@
+@import '_config';
+
+.article_box {
+    width: 90%;
+    background-color: #fff;
+    margin: 2.5em auto;
+    padding: 5em;
+}
+
+.article_step {
+    border-left: 2px solid @titleRubHomepage;
+    padding-left: 4em;
+    counter-increment: step-counter;
+    position: relative;
+}
+
+.article_step + .article_step {
+    padding-top: 7em;
+}
+
+.article_step_title {
+    font-size: 1.875em;
+    font-weight: @semibold;
+    margin-bottom: 0.75em;
+    position: relative;
+    text-transform: uppercase;
+
+    .icon_bubble {
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            left: 50%;
+            color: @lightTextColor;
+            font-size: .8em;
+        }
+    }
+}
+
+.article_step_desc {
+    font-size: 1.125em;
+    line-height: 1.5em;
+    font-weight: @medium;
+
+    p {
+        width: 70%;
+
+        &.paragrap_img {
+            width: 100%;
+        }
+    }
+
+    img {
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    &.article_intro {
+        margin-bottom: 4em;
+
+        p {
+            width: 100%;
+        }
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    h2 {
+        font-size: 22px;
+        line-height: 26px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    a {
+        color: @buttonColor;
+    }
+
+    .custom_btn_1 {
+        a {
+            color: white;
+        }
+    }
+}

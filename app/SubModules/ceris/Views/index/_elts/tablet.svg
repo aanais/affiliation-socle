@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="43.823" height="57.269" viewBox="0 0 43.823 57.269">
+    <defs>
+        <style>
+            .tablet-1{fill:#fff}
+        </style>
+    </defs>
+    <g id="prefix__tablet" transform="translate(-60.115)">
+        <path id="prefix__Tracé_91" d="M99.029 0h-34a4.915 4.915 0 00-4.909 4.909v2.953a.839.839 0 101.678 0V4.909a3.236 3.236 0 013.232-3.232h34a3.236 3.236 0 013.232 3.232V52.36a3.236 3.236 0 01-3.232 3.232h-34a3.236 3.236 0 01-3.232-3.232V11.217a.839.839 0 10-1.678 0V52.36a4.915 4.915 0 004.909 4.909h34a4.915 4.915 0 004.909-4.909V4.909A4.915 4.915 0 0099.029 0z" class="tablet-1" data-name="Tracé 91"/>
+        <path id="prefix__Tracé_92" d="M89.979 54.777v31.691a.839.839 0 101.678 0V55.616h33.789v11.5a.839.839 0 001.678 0V54.777a.839.839 0 00-.839-.839H90.818a.839.839 0 00-.839.839z" class="tablet-1" data-name="Tracé 92" transform="translate(-26.524 -47.906)"/>
+        <path id="prefix__Tracé_93" d="M89.979 220.878a.839.839 0 00.839.839h35.466a.839.839 0 00.839-.839v-25.747a.839.839 0 00-1.678 0v24.909H91.657v-5.559a.839.839 0 00-1.678 0z" class="tablet-1" data-name="Tracé 93" transform="translate(-26.524 -172.563)"/>
+        <path id="prefix__Tracé_94" d="M233.2 446.236a2.555 2.555 0 102.555-2.555 2.558 2.558 0 00-2.555 2.555zm3.433 0a.878.878 0 11-.878-.878.879.879 0 01.874.878z" class="tablet-1" data-name="Tracé 94" transform="translate(-153.725 -394.062)"/>
+        <path id="prefix__Tracé_95" d="M251.426 28.495a.839.839 0 000-1.678H247.6a.839.839 0 000 1.678z" class="tablet-1" data-name="Tracé 95" transform="translate(-165.775 -23.818)"/>
+        <circle id="prefix__Ellipse_6" cx=".839" cy=".839" r=".839" class="tablet-1" data-name="Ellipse 6" transform="translate(77.787 2.995)"/>
+    </g>
+</svg>

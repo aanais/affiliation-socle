@@ -1,0 +1,182 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ article.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block other_head %}
+    {% if article.metas.metatitle %}
+        <meta name="title" content="{{ article.metas.metatitle }}">
+    {% elseif customization.metas.metatitle %}
+        <meta name="title" content="{{ customization.metas.metatitle }}">
+    {% endif %}
+    {% if article.metas.metadescription %}
+        <meta name="description" content="{{ article.metas.metadescription }}">
+    {% elseif customization.metas.metadescription %}
+        <meta name="description" content="{{ customization.metas.metadescription }}">
+    {% endif %}
+    {% if article.metas.ogtitle %}
+        <meta property="og:title" content="{{ article.metas.ogtitle }}"/>
+    {% elseif customization.metas.ogtitle %}
+        <meta property="og:title" content="{{ customization.metas.ogtitle }}"/>
+    {% endif %}
+    {% if article.metas.ogdescription %}
+        <meta property="og:description" content="{{ article.metas.ogdescription }}"/>
+    {% elseif customization.metas.ogdescription %}
+        <meta property="og:description" content="{{ customization.metas.ogdescription }}"/>
+    {% endif %}
+    {% if article.metas.ogimage %}
+        <meta property="og:image" content="{{ article.metas.ogimage }}"/>
+    {% elseif customization.metas.ogimage %}
+        <meta property="og:image" content="{{ customization.metas.ogimage }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="post-template-default single single-post postid-144 single-format-standard wp-embed-responsive">
+        <div class="site-content atbs-single-style-7">
+            <div class="single-entry-wrap single-infinity-container">
+                <div class="atbs-ceris-block atbs-ceris-block-144 atbs-ceris-block--fullwidth element-scroll-percent single-entry single-entry--billboard-overlap-title   single-infinity-inner" data-url-to-load="https://atbs.bk-ninja.com/ceris_technology/impossibly-high-beauty-standards-are-ruining-my-self-esteem/" data-post-title-to-load="Impossibly High Beauty Standards Are Ruining My Self Esteem" data-postid="144" data-wcount="888" data-next-wcount="888" style="transform: none;">
+                    <div class="atbs-ceris-block atbs-ceris-block--fullwidth atbs-ceris-block--contiguous single-billboard--sm">
+                        <div class="background-img" style="background-image: url('{{ urlApi }}{{ article.image.url }}');"></div>
+                    </div>
+                    <div class="atbs-ceris-block atbs-ceris-block--fullwidth" style="transform: none;">
+                        <div class="container" style="transform: none;">
+                            <div class="row" style="transform: none;">
+                                <div class="atbs-ceris-main-col" role="main" style="transform: none;">
+                                    <article class="post-144 post type-post status-publish format-standard has-post-thumbnail hentry category-gadgets tag-asian tag-beauty tag-inspire post--single" style="transform: none;">
+                                        <div class="single-content" style="transform: none;">
+                                            <div class="single-body entry-content typography-copy" style="transform: none;">
+                                                <div class="single-body--content">
+                                                    <header class="single-header">
+                                                        <a class="cat-4 entry-cat post__cat post__cat--bg cat-theme-bg" href="{{ t('routes./category.translation') }}/{{ article.categories[0].slug }}" style="background-color: {{ article.categories[0].colors.background }}">{{ article.categories[0].title }}</a>
+                                                        <h1 class="entry-title post__title">{{ article.title }}</h1>
+                                                    </header>
+
+                                                    {% for content in article.content %}
+                                                        {% if content.__component == 'fields.text' %}
+                                                            {{ content.value|raw }}
+                                                        {% elseif content.__component == 'fields.image' %}
+                                                            <img class="align-{{ content.align }}" src="{{ urlApi }}{{ content.cover.url }}"/>
+                                                        {% elseif content.__component == 'fields.button' %}
+                                                            <a href="{{ content.link }}" target="_blank">
+                                                                <span>{{ content.title }}</span>
+                                                            </a>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div><!-- .single-content -->
+                                    </article><!-- .post-single -->
+
+                                    <div class="related-posts single-entry-section the-heading-size-xxs">
+                                        <div class="block-heading ">
+                                            <h4 class="block-heading__title">Articles similaires</h4>
+                                        </div>
+                                        <div class="atbs-ceris-posts-latest--text-right">
+                                            <div class="posts-list">
+                                                {% for article in similars %}
+                                                    <div class="list-item">
+                                                        <article class="post--overlay  text-center post--overlay-text-center--bg post--overlay-bottom post--overlay-md post--overlay-text-has-shadow  ">
+                                                            <div class="post__thumb post__thumb--overlay atbs-thumb-object-fit ">
+                                                                <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">
+                                                                    <img width="1200" height="675" src="{{ urlApi }}{{ article.image.url }}" class="attachment-ceris-l-16_9 size-ceris-l-16_9 wp-post-image" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="post__text  ">
+                                                                <div class="post__text-wrap">
+                                                                    <a class="cat-4 post__cat post__cat--bg cat-theme-bg" href="{{ t('routes./category.translation') }}/{{ article.categories[0].slug }}">{{ article.categories[0].title }}</a>
+                                                                    <h3 class="post__title typescale-2">
+                                                                        <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">{{ article.title }}</a>
+                                                                    </h3>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- .atbs-ceris-main-col -->
+
+
+                                {# SIDEBAR #}
+                                    <div class="atbs-ceris-sub-col sidebar js-sticky-sidebar" role="complementary" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+                                    	<div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; top: 90px; left: 1266.5px;">
+                                            <div id="bk_widget_posts_list-2" class="widget atbs-ceris-widget">
+                                                <div class="atbs-ceris-widget-indexed-posts-a">
+                                                    <div class="widget__title block-heading block-heading--line">
+                                                        <h4 class="widget__title-text">Articles les plus lus</h4>
+                                                    </div>
+                                                    <ol class="posts-list list-space-md list-unstyled">
+                                                        {% for recent in articles %}
+                                                            <li>
+                                                                <article class="post post--horizontal post--horizontal-xxs">
+                                                                    <div class="post__thumb ">
+                                                                        <a href="{{ t('routes./article.translation') }}/{{ recent.slug }}">
+                                                                            <img width="180" height="180" src="{{ urlApi }}{{ recent.image.url }}" class="attachment-ceris-xxs-1_1 size-ceris-xxs-1_1 wp-post-image" alt="">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="post__text ">
+                                                                        <h3 class="post__title typescale-0">
+                                                                            <a href="{{ t('routes./article.translation') }}/{{ recent.slug }}">{{ recent.title }}</a>
+                                                                        </h3>
+                                                                    </div>
+                                                                </article>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ol>
+                                                </div><!-- End Widget Module-->
+                                            </div>
+
+                                            <div class="widget atbs-ceris-widget">
+                                                <div class="ads-image">
+                                                    <a href="#">
+                                                        <img class="img-fluid" src="http://demo.themewinter.com/html/digiqole/images/banner-image/image2.png" alt="">
+                                                    </a>
+                                                </div>
+                                            </div><!-- widget end -->
+
+
+                                            <div id="bk_widget_category_titles-2" class="widget atbs-ceris-widget">
+                                                <div class="widget__title block-heading block-heading--line">
+                                                    <h4 class="widget__title-text">Explorer</h4>
+                                                </div>
+                                                <div class="atbs-ceris-widget-categories atbs-ceris-widget widget_category_tiles widget">
+                                                    <ul class="list-unstyled list-space-sm">
+                                                        {% for category in menu.categories %}
+                                                            {% if category.published %}
+                                                                <li>
+                                                                    <div class="category-tile cat-2 category-tile--sm">
+                                                                        <div class="category-tile__wrap">
+                                                                            <div class="background-img category-title-image">
+                                                                                <img src="{{ urlApi }}{{ category.image.cover.url }}" alt="bg-0">
+                                                                                <div class="category-tile__description"></div>
+                                                                            </div>
+                                                                            <div class="category-tile__inner">
+                                                                                <div class="category-tile__text">
+                                                                                    <div class="category-tile__name">{{ category.title }}</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <a href="{{ t('routes./category.translation') }}/{{ category.slug }}" class="link-overlay" title="View all"></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {# END SIDEBAR#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

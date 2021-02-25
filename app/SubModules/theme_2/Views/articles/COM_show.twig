@@ -1,0 +1,108 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ article.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block other_head %}
+    {% if article.metas.metatitle %}
+        <meta name="title" content="{{ article.metas.metatitle }}">
+    {% elseif customization.metas.metatitle %}
+        <meta name="title" content="{{ customization.metas.metatitle }}">
+    {% endif %}
+    {% if article.metas.metadescription %}
+        <meta name="description" content="{{ article.metas.metadescription }}">
+    {% elseif customization.metas.metadescription %}
+        <meta name="description" content="{{ customization.metas.metadescription }}">
+    {% endif %}
+    {% if article.metas.ogtitle %}
+        <meta property="og:title" content="{{ article.metas.ogtitle }}"/>
+    {% elseif customization.metas.ogtitle %}
+        <meta property="og:title" content="{{ customization.metas.ogtitle }}"/>
+    {% endif %}
+    {% if article.metas.ogdescription %}
+        <meta property="og:description" content="{{ article.metas.ogdescription }}"/>
+    {% elseif customization.metas.ogdescription %}
+        <meta property="og:description" content="{{ customization.metas.ogdescription }}"/>
+    {% endif %}
+    {% if article.metas.ogimage %}
+        <meta property="og:image" content="{{ article.metas.ogimage }}"/>
+    {% elseif customization.metas.ogimage %}
+        <meta property="og:image" content="{{ customization.metas.ogimage }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="breadcrumbs_container">
+        <div class="container">
+            <ul class="breadcrumbs">
+                <li><a href="/">Accueil</a></li>
+                {% if article.categories %}
+                    <li><a href="{{ t('routes./category.translation') }}/{{ article.categories[0].slug }}">{{ article.categories[0].title }}</a></li>
+                {% endif %}
+                <li><span>{{ article.title }}</span></li>
+            </ul>
+        </div>
+    </div>
+
+    {% if article.image.url %}
+        <div style="background-image: url('{{ urlApi }}{{ article.image.url }}')" class="category_bg_image"></div>
+    {% endif %}
+
+    <div class="container">
+        <div class="category_container {% if article.image.url %}with_bg{% endif %}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="article_container">
+                        {% if article.categories %}
+                            <span class="label_category"
+                                  style="background-color: {{ article.categories[0].colors.background }}">
+                            {{ article.categories[0].title }}
+                        </span>
+                        {% endif %}
+                        <h1 class="title_h1">{{ article.title }}</h1>
+                        {% if config.base.pubHome.active %}
+                            <div class="bann_pub">
+                                {{ config.base.pubHome.valueHome|raw }}
+                            </div>
+                        {% endif %}
+                        <div class="body_page">
+                            {% for content in article.content %}
+                                {% if content.__component == 'fields.text' %}
+                                    {{ content.value|raw }}
+                                {% elseif content.__component == 'fields.image' %}
+                                    <img src="{{ urlApi }}{{ content.cover.url }}"/>
+                                {% elseif content.__component == 'fields.button' %}
+                                    <a href="{{ content.link }}" target="_blank">
+                                        <span>{{ content.title }}</span>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if similars %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="similar_article">
+                            <h2 class="similar_article_title">Articles Similaires</h2>
+
+                            <div class="row">
+                                {% for article in similars %}
+                                    {% include 'layouts/_elts/TPL_card_posts.twig' with {'articleCat': article.categories[0]} %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

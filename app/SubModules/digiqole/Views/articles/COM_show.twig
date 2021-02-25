@@ -1,0 +1,208 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ article.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block other_head %}
+    {% if article.metas.metatitle %}
+        <meta name="title" content="{{ article.metas.metatitle }}">
+    {% elseif customization.metas.metatitle %}
+        <meta name="title" content="{{ customization.metas.metatitle }}">
+    {% endif %}
+    {% if article.metas.metadescription %}
+        <meta name="description" content="{{ article.metas.metadescription }}">
+    {% elseif customization.metas.metadescription %}
+        <meta name="description" content="{{ customization.metas.metadescription }}">
+    {% endif %}
+    {% if article.metas.ogtitle %}
+        <meta property="og:title" content="{{ article.metas.ogtitle }}"/>
+    {% elseif customization.metas.ogtitle %}
+        <meta property="og:title" content="{{ customization.metas.ogtitle }}"/>
+    {% endif %}
+    {% if article.metas.ogdescription %}
+        <meta property="og:description" content="{{ article.metas.ogdescription }}"/>
+    {% elseif customization.metas.ogdescription %}
+        <meta property="og:description" content="{{ customization.metas.ogdescription }}"/>
+    {% endif %}
+    {% if article.metas.ogimage %}
+        <meta property="og:image" content="{{ article.metas.ogimage }}"/>
+    {% elseif customization.metas.ogimage %}
+        <meta property="og:image" content="{{ customization.metas.ogimage }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="breadcrumb-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-home"></i>
+								<a href="#">Home</a>
+							<i class="fa fa-angle-right"></i>
+						</li>
+						{% if article.categories %}
+                            <li><a href="{{ t('routes./category.translation') }}/{{ article.categories[0].slug }}">{{ article.categories[0].title }}</a></li>
+                        {% endif %}
+						<li><i class="fa fa-angle-right"></i>{{ article.title }}</li>
+					</ol>
+				</div>
+			</div><!-- row end -->
+		</div><!-- container end -->
+	</div>
+
+
+    <div style="background-image: url('{{ urlApi }}{{ article.image.url }}')" class="category_bg_image"></div>
+
+    <section class="main-content pt-0">
+		<div class="container">
+			<div class="row ts-gutter-30">
+				<div class="col-lg-8">
+					<div class="single-post">
+						<div class="post-header-area">
+							<h2 class="post-title title-lg">{{ article.title }}</h2>
+							<ul class="post-meta">
+								<li>
+									<a href="#" class="post-cat fashion" style="background-color: {{ article.categories[0].colors.background }}">{{ article.categories[0].title }}</a>
+								</li>
+								<li class="social-share">
+									<i class="shareicon fa fa-share"></i>
+									<ul class="social-list">
+										<li><a data-social="facebook" class="facebook" href="#" title="The billionaire Philan thropist read to learn more and city"><i class="fa fa-facebook"></i></a></li>
+										<li><a data-social="twitter" class="twitter" href="#" title="The billionaire Philan thropist read to learn more and city"><i class="fa fa-twitter"></i></a></li>
+										<li><a data-social="linkedin" class="linkedin" href="#" title="The billionaire Philan thropist read to learn more and city"><i class="fa fa-linkedin"></i></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- post-header-area end -->
+						<div class="post-content-area">
+                            <div class="post-media mb-20">
+								<a href="{{ urlApi }}{{ article.image.url }}" class="gallery-popup cboxElement">
+									<img src="{{ urlApi }}{{ article.image.url }}" class="img-fluid" alt="">
+								</a>
+							</div>
+                            {% for content in article.content %}
+                                {% if content.__component == 'fields.text' %}
+                                    {{ content.value|raw }}
+                                {% elseif content.__component == 'fields.image' %}
+                                    <img class="align-{{ content.align }}" src="{{ urlApi }}{{ content.cover.url }}"/>
+                                {% elseif content.__component == 'fields.button' %}
+                                    <a href="{{ content.link }}" target="_blank">
+                                        <span>{{ content.title }}</span>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="gap-50 d-none d-lg-block"></div>
+                            <p>
+								{% if config.base.pubHome.active %}
+                                    <div class="bann_pub">
+                                        {{ config.base.pubHome.valueHome|raw }}
+                                    </div>
+                                {% endif %}
+							</p>
+						</div><!-- post-content-area end -->
+
+                        <div class="gap-20 d-none d-lg-block"></div>
+
+						<div class="post-footer">
+							<!-- realted post start -->
+							<div class="related-post">
+								<h2 class="block-title">
+									<span class="title-angle-shap">Ceci pourrait aussi vous intéressez</span>
+								</h2>
+								<div class="row">
+									{% for article in similars %}
+                                        {% include 'layouts/_elts/TPL_card_posts.twig' %}
+                                    {% endfor %}
+								</div><!-- row end -->
+							</div>
+						</div>
+					</div><!-- single-post end -->
+				</div><!-- col-lg-8 -->
+				<div class="col-lg-4">
+					<div class="sidebar">
+						<div class="sidebar-widget featured-tab post-tab mb-20">
+							<ul class="nav nav-tabs">
+								<li class="nav-item">
+									<a class="nav-link animated active fadeIn" href="#post_tab_a" data-toggle="tab">
+										<span class="tab-head">
+											<span class="tab-text-title">Derniers articles</span>
+										</span>
+									</a>
+								</li>
+							</ul>
+							<div class="gap-50 d-none d-md-block"></div>
+							<div class="row">
+								<div class="col-12">
+									<div class="tab-content">
+										<div class="tab-pane active animated fadeInRight" id="post_tab_a">
+											<div class="list-post-block">
+												<ul class="list-post">
+                                                    {% for recent in articles %}
+                                                        <li>
+                                                            <div class="post-block-style media">
+                                                                <div class="post-thumb">
+                                                                    <a href="{{ t('routes./article.translation') }}/{{ recent.slug }}">
+                                                                        <div class="img-fluid sidebar-img-fluid" style="background-image: url({{ urlApi }}{{ recent.image.url }})"></div>
+                                                                        {# <img class="img-fluid" src="{{ urlApi }}{{ recent.image.url }}" alt=""> #}
+                                                                    </a>
+                                                                    <span class="tab-post-count">{{ loop.index }}</span>
+                                                                </div><!-- Post thumb end -->
+
+                                                                <div class="post-content media-body">
+                                                                    <div class="grid-category">
+                                                                        <a class="post-cat tech-color" href="{{ t('routes./category.translation') }}/{{ recent.categories[0].slug }}" style="color: {{ recent.categories[0].colors.background }};">{{ recent.categories[0].title }}</a>
+                                                                    </div>
+                                                                    <h2 class="post-title">
+                                                                        <a href="{{ t('routes./article.translation') }}/{{ recent.slug }}">{{ recent.title }}</a>
+                                                                    </h2>
+                                                                </div><!-- Post content end -->
+                                                            </div><!-- Post block style end -->
+                                                        </li><!-- Li 1 end -->
+                                                    {% endfor %}
+												</ul><!-- List post end -->
+											</div>
+										</div><!-- Tab pane 1 end -->
+									</div><!-- tab content -->
+								</div>
+							</div>
+						</div><!-- widget end -->
+
+                        {# Pub Carrée à inclure ici #}
+                        {# <div class="sidebar-widget ads-widget mt-20">
+							<div class="ads-image">
+								<a href="#">
+									<img class="img-fluid" src="http://demo.themewinter.com/html/digiqole/images/banner-image/image2.png" alt="">
+								</a>
+							</div>
+						</div><!-- widget end --> #}
+
+						<div class="sidebar-widget">
+							<div class="ts-category">
+								<ul class="ts-category-list">
+                                    {% for category in menu.categories %}
+                                        {% if category.published %}
+                                            <li>
+                                                <a href="{{ t('routes./category.translation') }}/{{ category.slug }}" style="background-image: url({{ urlApi }}{{ category.image.cover.url }})">
+                                                    <span>{{ category.title }}</span>
+                                                    <span class="bar"></span>
+                                                </a>
+                                            </li><!-- end list 1 -->
+                                        {% endif %}
+                                    {% endfor %}
+								</ul>
+							</div>
+						</div><!-- widget end -->
+
+					</div>
+				</div><!-- sidebar col end -->
+			</div><!-- row end -->
+		</div><!-- container end -->
+	</section>
+
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{% block content %}
+
+    <div class="gap-30 d-none d-lg-block"></div>
+
+    <section class="trending-slider pt-lg-0">
+		<div class="container">
+			<div class="ts-grid-box">
+                <div class="owl-carousel dot-style2 transing-slide-style2">
+					{% for article in articles %}
+                        <div class="item post-overaly-style post-lg" style="background-image:url({{ urlApi }}{{ article.image.url }})">
+                            <a href="{{ t('routes./article.translation') }}/{{ article.slug }}" class="image-link">&nbsp;</a>
+                            <div class="overlay-post-content">
+                                <div class="post-content">
+                                    <div class="grid-category">
+                                        <a class="post-cat" style="background-color: {{ article.categories[0].colors.background }};" href="{{ t('routes./category.translation') }}/{{ article.categories[0].slug }}">{{ article.categories[0].title }}</a>
+                                    </div>
+
+                                    <h2 class="post-title title-md">
+                                        <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">{{ article.title }}</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+			</div>
+			<!-- ts-populer-post-box end-->
+		</div>
+		<!-- container end-->
+	</section>
+
+    <div class="block-wrapper no-padding">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="banner-img">
+						{% if config.base.pubHome.active %}
+                            <div class="bann_pub">
+                                {{ config.base.pubHome.valueHome|raw }}
+                            </div>
+                        {% endif %}
+					</div>
+				</div>
+				<!-- col end -->
+			</div>
+			<!-- row  end -->
+		</div>
+		<!-- container end -->
+	</div>
+
+    <div class="gap-50 d-none d-lg-block"></div>
+
+    <div class="block-wrapper pb-0 pt-3">
+        <div class="container">
+            <h2 class="block-title">
+				<span class="title-angle-shap">Les derniers articles</span>
+			</h2>
+            <div class="row">
+                {% for article in articles %}
+                    {% include 'layouts/_elts/TPL_card_posts.twig' with {'articleCat': article.categories[0]} %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="block-wrapper pb-0 pt-3">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-12">
+					<div class="banner-img">
+						{% if config.base.pubHome.active %}
+                            <div class="bann_pub">
+                                {{ config.base.pubHome.valueHome|raw }}
+                            </div>
+                        {% endif %}
+					</div>
+				</div>
+				<!-- col end -->
+			</div>
+			<!-- row  end -->
+		</div>
+		<!-- container end -->
+	</div>
+
+    <div class="gap-30 d-none d-lg-block"></div>
+
+    <section class="block-wrapper">
+		<div class="container">
+			<div class="row ts-gutter-30">
+				<div class="col-lg-12">
+					<h2 class="block-title">
+						<span class="title-angle-shap"> Retrouvez nos articles par catégories </span>
+					</h2>
+					<div class="row text-light ts-gutter-30">
+                        {% for category in menu.categories %}
+                            {% if category.published %}
+                                <div class="col-md-3">
+                                    <div class="post-overaly-style post-sm" style="background-color: {{ category.colors.background }}; background-image:url({{ urlApi }}{{ category.image.cover.url }})">
+                                        <a href="{{ t('routes./category.translation') }}/{{ category.slug }}" class="image-link">&nbsp;</a>
+                                        <div class="overlay-post-content">
+                                            <div class="post-content">
+                                                <h2 class="post-title mb-0">
+                                                    <a href="{{ t('routes./category.translation') }}/{{ category.slug }}">{{ category.title }}</a>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div><!-- post end -->
+                                </div><!-- end col -->
+                            {% endif %}
+                        {% endfor %}
+					</div><!-- end row -->
+
+				</div><!-- Content Col end -->
+			</div><!-- Row end -->
+		</div><!-- Container end -->
+	</section>
+
+    <div class="gap-30 d-none d-lg-block"></div>
+
+{% endblock %}

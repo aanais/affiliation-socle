@@ -1,0 +1,90 @@
+{% extends "layouts/FIN_layout.twig" %}
+
+{% set lpID = "-spe" %}
+
+{# Title #}
+{% block title %}
+    <title> {{ t('strings.sheet.title', {'account_name' : article.title })}} - {{ config.base.siteName }}</title>
+{% endblock %}
+
+{% block other_head %}
+    {{ parent() }}
+
+    <meta name="title" content=" {{ t('strings.sheet.title', {'account_name' : article.title })}} - {{ config.base.siteName }}">
+    {% if term.getCustomFields.meta_desc %}
+        <meta name="description" content="{{ term.getCustomFields.meta_desc }}">
+    {% else %}
+        <meta name="description" content="{{ term.getCustomFields.introduction | striptags | raw }}">
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+    {% if choiceLangue %}
+        {% include 'templates/_elts/pool.twig' %}
+    {% endif %}
+
+    <div class="landing_container">
+        <div class="flex_container">
+            <div class="bloc_left">
+                <h1 class="title">
+                    {{ article.title }}
+                    <span class="category_title_logo category_title_logo_copyright"></span>
+                </h1>
+
+                <h2 class="subtitle">
+                    {{ t('strings.landings.subtitle_3_account', {'account_cat' : article.tags[0].title }) }}
+                </h2>
+                <div class="flex_radio">
+                    <div class="radiobutton">
+                        <input
+                            type="radio"
+                            id="yes"
+                            name="typeAnswer"
+                            data-value="{{ t('strings.landings.data-tuto.yes') }} {{ article.title }}"
+                            value="{{ t('strings.landings.select.one') }}"
+                            >
+                        <label for="yes">
+                            <span>{{ t('strings.landings.select.one') }}</span>
+                        </label>
+                    </div>
+                    <div class="radiobutton">
+                        <input
+                            type="radio"
+                            id="no"
+                            name="typeAnswer"
+                            data-value="{{ t('strings.landings.data-tuto.no') }} {{ article.title }}"
+                            value="{{ t('strings.landings.select.two') }}">
+                        <label for="no">
+                            <span>{{ t('strings.landings.select.two') }}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="landing_btn_container">
+                    <div class="btn_fdz landing_btn btn-fdz-big {{ squel.fdzButtonCssClass }}" data-value="{{ t('strings.landings.btns.tuto_1') }}">
+                        <span class="landing_btn_label">
+                            <span class="semibold">{{ t('strings.landings.sheet.btn') }}{% include "articles/_elts/arrow.svg" %}</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div id="{{ squel.fdzButtonCssClass }}" {{ dataContinueHref }}
+                    class="clear {{ squel.fdzButtonCssClass }}"
+                    data-tuto-logo-ch="{{ config.base.plugin.logo.chrome }}"
+                    {% for tuto in config.base.reconnaissance.findizer.tutos.toArray() %} data-tuto-management-{{ tuto }}="true"{% endfor %}>
+
+                    {% if (squel.infoUser.browser != 'chrome') %}
+                        <p class="text-center">
+                            <span>{{ t('strings.landings.label_install')}}</span>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="bloc_right">
+                {% include "articles/_elts/illu_lp_spe.svg" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

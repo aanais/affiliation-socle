@@ -1,0 +1,42 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{% block content %}
+	<div class="bloc_article">
+		<div class="container">
+			<div class="row">
+				{% for item in articles %}
+					{% include 'layouts/_elts/TPL_card_posts.twig' with {'articleCat': article.categories[0], 'link': 'article'} %}
+				{% endfor %}
+				{% for item in pages %}
+					{% include 'layouts/_elts/TPL_card_posts.twig' with {'link': 'page'} %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% if menu.categories %}
+		<div class="home_prefooter">
+			<div class="container">
+				<div class="home_prefooter_container">
+					<div class="row">
+						<div class="col-md-12">
+							<h3>Articles par catégories</h3>
+							<div class="home_list_cat">
+								{% for category in menu.categories %}
+									{% if category.published %}
+										<a href="{{ t('routes./category.translation') }}/{{ category.slug }}">
+											<img src="/dist/img/theme_2/svg/image_{{ loop.index }}.svg" alt="" class="home_list_cat_img">
+											<img src="/dist/img/theme_2/svg/image_{{ loop.index }}_hover.svg" alt="" class="home_list_cat_img_hover">
+											<h4>{{ category.title }}</h4>
+										</a>
+									{% endif %}
+
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+<header class="main_header">
+    {% if not squel.eligibleSatellite and not squel.version.comeFromCampaign %}
+        {% if not request.getQuery('getLanding') %}
+            <div class="main_header_logo" >
+                <img src="{{ config.base.logo_landing }}">
+            </div>
+        {% endif %}
+    {% endif %}
+</header>

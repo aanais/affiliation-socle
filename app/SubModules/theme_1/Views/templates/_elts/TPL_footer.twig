@@ -1,0 +1,37 @@
+<footer class="main_footer">
+    <div class="main_footer_logo">
+            {% if customization.logo_footer %}
+                <a href="/" style="background-image: url('{{ urlApi }}{{ customization.logo_footer.url }}')"></a>
+            {% elseif customization.logo_header %}
+                <a href="/" style="background-image: url('{{ urlApi }}{{ customization.logo_header.url }}')"></a>
+            {% else %}
+                <p>{{ customization.title }}</p>
+            {% endif %}
+    </div>
+
+    <div class="main_footer_about">
+        {{ customization.text_footer | raw }}
+    </div>
+
+    <div class="main_footer_nav">
+        <ul class="main_footer_nav_list">
+            {% if config.base.countryCode == "fr" %}
+                <li class="main_footer_nav_item">
+                    <a href="{{ t('routes./info/mentions.default') }}">Mentions Légales</a>
+                </li>
+            {% endif %}
+            <li class="main_footer_nav_item">
+                <a href="{{ t('routes./info/gcu.default') }}">{{ t('strings.footer.cgu') }}</a>
+            </li>
+            <li class="main_footer_nav_item">
+                <a href="{{ t('routes./info/contact.default') }}">{{ t('strings.footer.contact') }}</a>
+            </li>
+            <li class="main_footer_nav_item">
+                <a href="{{ t('routes./info/cookies.default') }}">{{ t('strings.footer.cookies') }}</a>
+            </li>
+            <li class="main_footer_nav_item">
+                <a href="{{ t('routes./info/privacy-policies.default') }}">Privacy Policies</a>
+            </li>
+        </ul>
+    </div>
+</footer>

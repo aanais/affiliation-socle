@@ -1,0 +1,44 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ categorie.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="category_title">{{ categorie.title }}</h1>
+    {% if config.base.pubHome and config.base.pubHome.active == true %}
+        <div class="addHome container text-center">
+            {{ config.base.pubHome.valueHome |raw }}
+        </div>
+    {% endif %}
+
+    <section class="category_accounts">
+
+
+        {% for post in categorie.posts %}
+            <article class="category_account_box">
+                <a class="category_account_thumbnail" href="{{ t('routes./article.translation') }}/{{ post.slug }}"
+                   style="background-image: url('{{ urlApi~post.image.url }}')"></a>
+
+                <div class="category_account_texts">
+                    <a class="category_account_title" href="{{ t('routes./article.translation') }}/{{ post.slug }}">
+                        {{ post.title }}
+                    </a>
+
+                    <div class="category_account_desc">
+                        {{ post.content[0].value | raw }}
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+
+
+    </section>
+    {% if config.base.pubHome and config.base.pubHome.active == true %}
+        <div class="addHome container text-center">
+            {{ config.base.pubHome.valueHome |raw }}
+        </div>
+    {% endif %}
+{% endblock %}

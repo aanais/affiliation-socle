@@ -1,0 +1,260 @@
+@import '_config';
+@import 'vendor/audivox/squel-source/app/Common/Assets/less/_mixins';
+
+#landing-spe,
+#landing-home {
+    font-size: 14px;
+    .main_header {
+        background-color: #000;
+        height: 48px;
+    }
+
+    .title {
+        .textParams(@mainFont, 1.5em, #857f7f, @medium);
+        border-bottom: 1px solid #857f7f;
+        padding-bottom: 10px;
+    }
+
+    .subtitle {
+        .textParams(@mainFont, 1em, #857f7f, @regular);
+    }
+
+    .landing_container {
+        background-color: #fff;
+        margin-top: 50px;
+        padding-top: 0;
+
+        @media only screen and (max-width : @desktop) {
+            margin-top: 25px;
+        }
+
+    }
+}
+
+#landing-spe {
+    .landing_btn_container {
+        width: 100%;
+    }
+
+    .landing_btn {
+        flex: 0 0 100%;
+        max-width: 343px;
+        .textParams(@mainFont, 2em, #fff, @regular);
+        padding: 0;
+        background-color: #4b8df8;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.2);
+        height: 110px;
+        margin: 50px auto 0;
+
+        svg {
+            margin-left: 25px;
+            transform: scale(2);
+        }
+    }
+
+    .flex_container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 50px 0;
+        .addFlex(row, flex-start, space-between, no-wrap);
+
+        @media only screen and (max-width : @desktop) {
+            width: 90%;
+        }
+
+        @media only screen and (max-width : @tablet) {
+            margin-top: 25px;
+        }
+
+        > div {
+            flex: 0 0 45%;
+
+            @media only screen and (max-width : @tablet) {
+                flex: 0 0 100%;
+            }
+
+            &.bloc_right {
+                svg {
+                    margin: 0 auto;
+                    display: block;
+                }
+
+                @media only screen and (max-width : @tablet) {
+                    display: none;
+                }
+            }
+        }
+
+        .flex_radio {
+            width: 50%;
+            margin: 15px auto;
+            .addFlex(row, center, space-between, no-wrap);
+
+            > .radiobutton {
+                flex: 0 0 45%;
+            }
+        }
+
+
+        .radiobutton {
+            position: relative;
+
+            i, span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            input[type="radio"] {
+              // hide the real radio button
+              .invisible();
+
+              & + label {
+                padding: 5px;
+                cursor: pointer;
+                display: inline-block;
+                vertical-align: middle;
+                font-weight: 400;
+                margin-top: -5px;
+                margin-left: 4px;
+                border-radius: 50px;
+                width: 100%;
+                text-align: center;
+                height: 46px;
+                line-height: 30px;
+                background-color: #fff;
+                border: 2px solid #e4e2e2;
+
+
+                @media only screen and (max-width : @desktop) {
+                    height: 46px;
+                    line-height: 30px;
+                }
+
+                span {
+                    .textParams(@mainFont, 1em, #717171, @medium);
+                    margin-left: 5px;
+                    line-height: normal;
+                }
+              }
+
+              // selected
+              &:hover + label,
+              &:checked + label {
+                border-color: #123a7c;
+                span {
+                    .textParams(@mainFont, 1em, #123a7c, @medium);
+                }
+              }
+
+            }
+          }
+
+          // Mixins
+      // ------------
+
+      // hide the element (hidden != display:none)
+      .invisible() {
+        position: absolute;
+        left: -9999px;
+        z-index: -9999;
+        visibility: hidden;
+    }
+
+
+    // circle mixin to create circle elements
+    .circle(@dimensions) {
+      width: @dimensions;
+      height: @dimensions;
+      border-radius: 50%;
+    }
+    }
+}
+
+#landing-home {
+    .title {
+        text-align: center;
+        width: 40%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .subtitle {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .landing_container {
+        width: 90%;
+        margin: 50px auto 0;
+        padding: 50px
+    }
+
+    .landing_btn_container {
+        width: 75%;
+        margin: 38px auto;
+        .addFlex(row, flex-start, space-between, no-wrap);
+
+        @media only screen and (max-width : @desktop) {
+            width: 100%;
+        }
+
+        @media only screen and (max-width : @tablet) {
+            width: 75%;
+            .addFlex(row, flex-start, space-between, wrap);
+        }
+
+        @media only screen and (max-width : @mobile) {
+            width: 100%;
+        }
+
+        > div {
+            flex: 0 0 30%;
+            max-width: 264px;
+            margin: 0 auto;
+
+            @media only screen and (max-width : @tablet) {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .landing_btn {
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.2);
+        background-color: #4b8df8;
+        height: 94px;
+        line-height: 94px;
+        padding: 0;
+
+        @media only screen and (max-width : @tablet) {
+            + .landing_btn {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .landing_btn_label {
+        .textParams(@mainFont, 1.5em, #fff, @medium);
+        text-align: center;
+        display: block;
+
+        svg, span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        span {
+            font-size: 0.7em;
+            margin: 0 15px;
+        }
+    }
+
+    .illu_lp_spe {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}

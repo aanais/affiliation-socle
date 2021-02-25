@@ -1,0 +1,54 @@
+{# Fonts #}
+{% block fonts %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+{% endblock %}
+
+{# Styles #}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/base-vendors.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/common.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/ceris.css">
+    {# You can add other files... #}
+{% endblock %}
+
+{% block title %}
+    <title>{{ customization.metas.metatitle }}</title>
+{% endblock %}
+
+{% block other_head %}
+    {% if customization.metas.metatitle %}
+        <meta name="title" content="{{ customization.metas.metatitle }}">
+    {% endif %}
+    {% if customization.metas.metadescription %}
+        <meta name="description" content="{{ customization.metas.metadescription }}">
+    {% endif %}
+    {% if customization.metas.ogtitle %}
+        <meta property="og:title" content="{{ customization.metas.ogtitle }}"/>
+    {% endif %}
+    {% if customization.metas.ogdescription %}
+        <meta property="og:description" content="{{ customization.metas.ogdescription }}"/>
+    {% endif %}
+    {% if customization.metas.ogimage %}
+        <meta property="og:image" content="{{ customization.metas.ogimage }}"/>
+    {% endif %}
+{% endblock %}
+
+
+{# Body #}
+{% block body %}
+{% endblock %}
+
+{# Javascript #}
+{% block javascripts %}
+    <script src="{{ config.base.urlAssets }}js/jquery.js"></script>
+    <script src="{{ config.base.urlAssets }}js/jquery-ui.js"></script>
+    <script src="{{ config.base.urlAssets }}js/js-cookie.js"></script>
+    <script src="{{ config.base.urlAssets }}js/bowser.js"></script>
+    <script src="{{ config.base.urlAssets }}js/common.js"></script>
+    <script src="{{ config.base.urlAssets }}js/logsrc.js"></script>
+    <script src="{{ config.base.urlAssets }}js/ceris/admin.js"></script>
+    <script src="{{ config.base.urlAssets }}js/ceris/vendors.js"></script>
+    <script src="{{ config.base.urlAssets }}js/ceris.js"></script>
+    {# You can add other files... #}
+{% endblock %}

@@ -1,0 +1,61 @@
+{# Extension du fichier COM_mentions_source de squel_source #}
+{% extends "templates/COM_mentions_source.twig" %}
+
+{% set idBody = 'mentions' %}
+
+{# Favicon #}
+{% block favicon %}
+    {% include "templates/_elts/TPL_favicon.twig" %}
+{% endblock %}
+
+{# Fonts #}
+{% block fonts %}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+{% endblock %}
+
+{# Styles #}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/base-vendors.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/common.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/theme_1.css">
+    {# You can add other files... #}
+{% endblock %}
+
+{% block body %}
+    <body id="{{ idBody }}">
+        {% include "templates/_elts/TPL_header.twig" %}
+        <div class="main-container">
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+            {% include "templates/_elts/TPL_footer.twig" %}
+        </div>
+    </body>
+{% endblock %}
+
+{# Javascript #}
+{% block javascripts %}
+    <script src="{{ config.base.urlAssets }}js/jquery.js"></script>
+    <script src="{{ config.base.urlAssets }}js/common.js"></script>
+    <script src="{{ config.base.urlAssets }}js/logsrc.js"></script>
+{% endblock %}
+
+{# Other scripts #}
+{% block other_scripts %}
+{#
+   # Default scripts from squel source, see config.php for id's.
+   # Set « false » to disable inclusion.
+   # Also, if no id provided, the script won't be included
+   #}
+  {% include 'scripts/default.twig' with {
+    'scripts': {
+      'google_analytics.twig' : true,
+      'facebook_sdk.twig'     : false,
+      'pinterest.twig'        : false,
+      'bigl.twig'             : true,
+      'bugsnag.twig'          : true,
+      'satellite.twig'        : false,
+      'adwords.twig'          : true
+    }
+   } %}
+  {% endblock %}

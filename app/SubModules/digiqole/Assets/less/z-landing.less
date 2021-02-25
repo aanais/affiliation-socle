@@ -1,0 +1,616 @@
+@import '_config';
+@urlAssets: '/dist/';
+@import (optional) "./app/Common/Assets/less/configOverride";
+
+#landing,
+#landing-spe,
+#landing-home {
+    overflow-x: hidden;
+    background-color: #efefef;
+
+    .main-container {
+        padding-bottom: 0;
+    }
+
+    .landing_container {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 8em;
+    }
+
+    .main_footer {
+        background-color: @bgFooter;
+        font-size: 1.250em;
+        display: block;
+        padding: 1em;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .main_footer_nav_list {
+        width: 70%;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        .addFlex(row, flex-end, space-between, no-wrap);
+    }
+
+    .main_footer_nav_item {
+        a {
+            color: @lightText;
+        }
+    }
+
+    .main_header {
+        background-color: @bgHeader;
+        display: block;
+        position: relative;
+        height: 14%;
+        text-align: center;
+    }
+
+    .main_header_logo {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        padding: 0;
+        border: 3px solid @border;
+        background-color: @bgHeader;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .illu_computer {
+        position: absolute;
+        top: 2em;
+        right: -10em;
+        background-image: url("@{urlAssets}img/app/computer.png");
+        width: 30%;
+        background-size: contain;
+
+        &::after {
+            content: '';
+            display: block;
+            padding-bottom: 100%;
+        }
+    }
+
+    .title {
+        font-weight: @medium;
+        font-size: 2.5em;
+        margin-bottom: 1.5em;
+        max-width: 80%;
+
+        b{
+            font-weight: @bold;
+        }
+    }
+
+    .description{
+        font-size: 1.5em;
+        margin-bottom: 1.3em;
+        width: 740px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: justify;
+    }
+
+    .subtitle {
+        font-weight: @medium;
+        font-size: 1.5em;
+        margin-bottom: 2em;
+
+        &_category {
+            margin-top: 6em;
+        }
+
+        &_gender {
+            margin-top: 3em;
+        }
+    }
+
+    .select_box {
+        width: 45%;
+        margin-left: 3em;
+        margin-bottom: 7em;
+        position: relative;
+
+        &_gender {
+            margin-bottom: 5em;
+        }
+    }
+
+    .select_account {
+        width: 100%;
+        padding: .5em 1em;
+        font-size: 1.875em;
+        box-shadow: 0px 5px 10px 0px @boxShadow;
+        border-radius: 15px;
+        outline: 0;
+        cursor: pointer;
+        border: none;
+        font-weight: @medium;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+
+    .landing_btn_container {
+        display: block;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%;
+        margin: 0 auto;
+
+        &_category {
+            margin: 0;
+        }
+
+        &_gender {
+            width: 60%;
+            justify-content: flex-start;
+        }
+
+        &.landing_btn_container_category_email{
+            justify-content: normal;
+            clear: both;
+            display:block;
+            width:100%;
+
+            .landing_btn{
+                flex:auto;
+                width: 440px;
+                max-width:100%;
+                display:block;
+                margin: 0px auto 30px;
+            }
+        }
+    }
+
+    .landing_btn {
+        box-shadow: 0px 5px 10px 0px @boxShadow;
+        background-color: @landingBtnColor;
+        text-align: center;
+        padding: 1.5em 2em;
+        flex: 0 0 30%;
+        font-size: 1.375em;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        transform: scale(1);
+        transition: .5s ease-in-out;
+        max-width: 30%;
+        height: 6.5em;
+        position: relative;
+
+        .semibold {
+            display: block;
+            font-size: 1.500em;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 1em;
+
+            &.gender {
+                padding: 0;
+            }
+        }
+
+        &:hover {
+            background-color: #377ae8;
+            transform: scale(1.05);
+            transition: .5s ease-in-out;
+        }
+
+        &#woman, &#man {
+            flex: 1;
+            max-width: 45%;
+        }
+    }
+
+    .landing_btn + .landing_btn {
+        margin-left: 25px;
+    }
+
+    #fdz-installer-onsite {
+        text-align: center;
+        margin-top: 2em;
+    }
+
+    .copyright {
+        text-align: center;
+        font-size: 2em;
+        margin-top: 1.5em;
+    }
+
+    .chevron {
+        margin-left: .5em;
+    }
+
+    .woman {
+        background-image: url("@{urlAssets}img/logsrc/woman.png");
+        background-size: contain;
+        width: 2.5em;
+        height: 2em;
+        display: inline-block;
+        vertical-align: middle;
+        background-repeat: no-repeat;
+    }
+
+    .man {
+        background-image: url("@{urlAssets}img/logsrc/man.png");
+        background-size: contain;
+        width: 2.5em;
+        height: 2em;
+        display: inline-block;
+        vertical-align: middle;
+        background-repeat: no-repeat;
+    }
+
+    .landing_sheet_box{
+
+        text-align:center;
+
+        .rub_box_accounts_item {
+            display: inline-block;
+            vertical-align: middle;
+            width: 200px;
+            height: 100px;
+            margin: 30px 10px;
+            cursor:pointer;
+
+            .rub_box_account_item_title{
+                position: relative;
+                display: block;
+                text-align: left;
+                background-color: white;
+                margin-top: 100px;
+                height: 30px;
+                line-height:30px;
+                padding: 0px 10px;
+                font-size: 1.3em;
+            }
+        }
+    }
+
+    .main-wrap{
+        padding-bottom:50px;
+    }
+
+}
+
+.app-click-btn{
+    padding:20px;
+}
+
+@media screen and (max-width: 768px) {
+    #landing,
+    #landing-spe,
+    #landing-home {
+        .description{
+            width: 100%;
+        }
+    }
+}
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    background-color: #fff;
+    width: 500px !important;
+
+    .ui-menu-item {
+        padding: .75em;
+        font-size: 1.5em;
+    }
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 300px;
+  }
+.ui-widget {
+    width: 45%;
+    margin-left: 3em;
+    margin-bottom: 7em;
+    position: relative;
+}
+
+.ui-widget #terms {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    padding: 1em;
+    font-size: 1.875em;
+    box-shadow: 0px 5px 10px 0px #c1bfbf;
+    border-radius: 15px;
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    position: relative;
+}
+
+.ui-menu-item {
+    &:hover {
+        background-color: #f5F5F5;
+        cursor: pointer;
+    }
+}
+
+@import '_config';
+@import 'vendor/audivox/squel-source/app/Common/Assets/less/_mixins';
+
+#landing-spe,
+#landing-home {
+    font-size: 14px;
+    .main_header {
+        background-color: #000;
+        height: 48px;
+    }
+
+    .title {
+        .textParams(@mainFont, 1.5em, #857f7f, @medium);
+        border-bottom: 1px solid #857f7f;
+        padding-bottom: 10px;
+    }
+
+    .subtitle {
+        .textParams(@mainFont, 1em, #857f7f, @regular);
+    }
+
+    .landing_container {
+        background-color: #fff;
+        margin-top: 50px;
+        padding-top: 0;
+
+        @media only screen and (max-width : @desktop) {
+            margin-top: 25px;
+        }
+
+    }
+}
+
+#landing-spe {
+    .landing_btn_container {
+        width: 100%;
+    }
+
+    .landing_btn {
+        flex: 0 0 100%;
+        max-width: 343px;
+        .textParams(@mainFont, 2em, #fff, @regular);
+        padding: 0;
+        background-color: #4b8df8;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.2);
+        height: 110px;
+        margin: 50px auto 0;
+
+        svg {
+            margin-left: 25px;
+            transform: scale(2);
+        }
+    }
+
+    .flex_container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 50px 0;
+        .addFlex(row, flex-start, space-between, no-wrap);
+
+        @media only screen and (max-width : @desktop) {
+            width: 90%;
+        }
+
+        @media only screen and (max-width : @tablet) {
+            margin-top: 25px;
+        }
+
+        > div {
+            flex: 0 0 45%;
+
+            @media only screen and (max-width : @tablet) {
+                flex: 0 0 100%;
+            }
+
+            &.bloc_right {
+                svg {
+                    margin: 0 auto;
+                    display: block;
+                }
+
+                @media only screen and (max-width : @tablet) {
+                    display: none;
+                }
+            }
+        }
+
+        .flex_radio {
+            width: 50%;
+            margin: 15px auto;
+            .addFlex(row, center, space-between, no-wrap);
+
+            > .radiobutton {
+                flex: 0 0 45%;
+            }
+        }
+
+
+        .radiobutton {
+            position: relative;
+
+            i, span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            input[type="radio"] {
+              // hide the real radio button
+              .invisible();
+
+              & + label {
+                padding: 5px;
+                cursor: pointer;
+                display: inline-block;
+                vertical-align: middle;
+                font-weight: 400;
+                margin-top: -5px;
+                margin-left: 4px;
+                border-radius: 50px;
+                width: 100%;
+                text-align: center;
+                height: 46px;
+                line-height: 30px;
+                background-color: #fff;
+                border: 2px solid #e4e2e2;
+
+
+                @media only screen and (max-width : @desktop) {
+                    height: 46px;
+                    line-height: 30px;
+                }
+
+                span {
+                    .textParams(@mainFont, 1em, #717171, @medium);
+                    margin-left: 5px;
+                    line-height: normal;
+                }
+              }
+
+              // selected
+              &:hover + label,
+              &:checked + label {
+                border-color: #123a7c;
+                span {
+                    .textParams(@mainFont, 1em, #123a7c, @medium);
+                }
+              }
+
+            }
+          }
+
+          // Mixins
+      // ------------
+
+      // hide the element (hidden != display:none)
+      .invisible() {
+        position: absolute;
+        left: -9999px;
+        z-index: -9999;
+        visibility: hidden;
+    }
+
+
+    // circle mixin to create circle elements
+    .circle(@dimensions) {
+      width: @dimensions;
+      height: @dimensions;
+      border-radius: 50%;
+    }
+    }
+}
+
+#landing-home {
+    .title {
+        text-align: center;
+        width: 40%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .subtitle {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .landing_container {
+        width: 90%;
+        margin: 50px auto 0;
+        padding: 50px
+    }
+
+    .landing_btn_container {
+        width: 75%;
+        margin: 38px auto;
+        .addFlex(row, flex-start, space-between, no-wrap);
+
+        @media only screen and (max-width : @desktop) {
+            width: 100%;
+        }
+
+        @media only screen and (max-width : @tablet) {
+            width: 75%;
+            .addFlex(row, flex-start, space-between, wrap);
+        }
+
+        @media only screen and (max-width : @mobile) {
+            width: 100%;
+        }
+
+        > div {
+            flex: 0 0 30%;
+            max-width: 264px;
+            margin: 0 auto;
+
+            @media only screen and (max-width : @tablet) {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .landing_btn {
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.2);
+        background-color: #4b8df8;
+        height: 94px;
+        line-height: 94px;
+        padding: 0;
+
+        @media only screen and (max-width : @tablet) {
+            + .landing_btn {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .landing_btn_label {
+        .textParams(@mainFont, 1.5em, #fff, @medium);
+        text-align: center;
+        display: block;
+
+        svg, span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        span {
+            font-size: 0.7em;
+            margin: 0 15px;
+        }
+    }
+
+    .illu_lp_spe {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}

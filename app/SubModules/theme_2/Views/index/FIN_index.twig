@@ -1,0 +1,67 @@
+{% extends "layouts/FIN_layout.twig" %}
+
+{% set lpID = "-home" %}
+
+{% block content %}
+
+    {% if choiceLangue %}
+        {% include 'templates/_elts/pool.twig' %}
+    {% endif %}
+
+    <div class="landing_container">
+        <h1 class="title">{{ t('strings.landings.home_title') | raw}}</h1>
+
+        <h2 class="subtitle">{{ t('strings.landings.home_subtitle') }}</h2>
+
+        <div class="landing_btn_container landing_btn_container_category">
+            <div class="btn_fdz landing_btn btn-fdz-big {{ squel.fdzButtonCssClass }}" id="create" data-value="{{ t('strings.landings.btns.tuto_1') }}">
+                <span class="landing_btn_label">
+                    {% include 'index/_elts/laptop.svg' %}
+                    <span>{{ t('strings.landings.btns.btn_1') | raw }}</span>
+                    {% include 'index/_elts/next.svg' %}
+                </span>
+            </div>
+            <div class="btn_fdz landing_btn btn-fdz-big {{ squel.fdzButtonCssClass }}" id="login" data-value="{{ t('strings.landings.btns.tuto_2') }}">
+                <span class="landing_btn_label">
+                    {% include 'index/_elts/mobile-phone.svg' %}
+                    <span>{{ t('strings.landings.btns.btn_2') | raw }}</span>
+                    {% include 'index/_elts/next.svg' %}
+                </span>
+            </div>
+            <div class="btn_fdz landing_btn btn-fdz-big {{ squel.fdzButtonCssClass }}" id="delete" data-value="{{ t('strings.landings.btns.tuto_3') }}">
+                <span class="landing_btn_label">
+                    {% include 'index/_elts/tablet.svg' %}
+                    <span>{{ t('strings.landings.btns.btn_3') | raw }}</span>
+                    {% include 'index/_elts/next.svg' %}
+                </span>
+            </div>
+        </div>
+
+        <div id="{{ squel.fdzButtonCssClass }}" {{ dataContinueHref }}
+             class="clear {{ squel.fdzButtonCssClass }}"
+             data-tuto-logo-ch="{{ config.base.plugin.logo.chrome }}"
+            {% for tuto in config.base.reconnaissance.findizer.tutos.toArray() %} data-tuto-management-{{ tuto }}="true"{% endfor %}>
+            {% if (squel.infoUser.browser != 'chrome') %}
+                <p class="text-center">
+                    <span>{{ t('strings.landings.label_install')}}</span>
+                </p>
+            {% endif %}
+        </div>
+
+        {% include "articles/_elts/illu_lp_spe.svg" %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var availableTerms = {{ terms|json_encode|raw }};
+        var terms = availableTerms.map(function(item) {
+            return item.label;
+        });
+        $(".ui-widget #terms").autocomplete({
+            source: terms
+        });
+    </script>
+{% endblock %}

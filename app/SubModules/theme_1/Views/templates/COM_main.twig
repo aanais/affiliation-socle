@@ -1,0 +1,82 @@
+{# Extension du fichier COM_main_source de squel_source #}
+{% extends "templates/COM_main_source.twig" %}
+
+{# Favicon #}
+{% block favicon %}
+    {% include "templates/_elts/TPL_favicon.twig" %}
+{% endblock %}
+
+{# Fonts #}
+{% block fonts %}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+{% endblock %}
+
+{# Styles #}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/base-vendors.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/common.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/logsrc-customTinyMCE.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/theme_1.css">
+    {# You can add other files... #}
+{% endblock %}
+
+{% block title %}
+    <title>{{ customization.metas.metatitle }}</title>
+{% endblock %}
+
+{% block other_head %}
+    {% if customization.metas.metatitle %}
+        <meta name="title" content="{{ customization.metas.metatitle }}">
+    {% endif %}
+    {% if customization.metas.metadescription %}
+        <meta name="description" content="{{ customization.metas.metadescription }}">
+    {% endif %}
+    {% if customization.metas.ogtitle %}
+        <meta property="og:title" content="{{ customization.metas.ogtitle }}"/>
+    {% endif %}
+    {% if customization.metas.ogdescription %}
+        <meta property="og:description" content="{{ customization.metas.ogdescription }}"/>
+    {% endif %}
+    {% if customization.metas.ogimage %}
+        <meta property="og:image" content="{{ customization.metas.ogimage }}"/>
+    {% endif %}
+{% endblock %}
+
+
+{# Body #}
+{% block body %}
+{% endblock %}
+
+{# Javascript #}
+{% block javascripts %}
+    <script src="{{ config.base.urlAssets }}js/jquery.js"></script>
+    <script src="{{ config.base.urlAssets }}js/jquery-ui.js"></script>
+    <script src="{{ config.base.urlAssets }}js/js-cookie.js"></script>
+    <script src="{{ config.base.urlAssets }}js/bowser.js"></script>
+    <script src="{{ config.base.urlAssets }}js/common.js"></script>
+    <script src="{{ config.base.urlAssets }}js/logsrc.js"></script>
+    {# You can add other files... #}
+{% endblock %}
+
+
+{# Other scripts #}
+{% block other_scripts %}
+    {#
+    # Default scripts from squel source, see config.php for id's.
+    # Set « false » to disable inclusion.
+    # Also, if no id provided, the script won't be included
+    #}
+   {% include 'scripts/default.twig' with {
+        'scripts': {
+            'google_analytics.twig' : true,
+            'facebook_sdk.twig'     : true,
+            'bigl.twig'             : not squel.isSatellite,
+            'bugsnag.twig'          : true,
+            'findizer.twig'         : squel.isSatellite,
+            'adwords.twig'          : true,
+            'redirect.twig'         : squel.isSatellite,
+        }}
+    %}
+
+{% endblock %}

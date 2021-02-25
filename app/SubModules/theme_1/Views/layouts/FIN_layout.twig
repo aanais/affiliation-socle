@@ -1,0 +1,30 @@
+{% extends "templates/COM_main.twig" %}
+
+{% block body %}
+    <!--[if IE 9]><body id="landing" class="ie9"><![endif]-->
+    <body id="landing{{ lpID }}">
+
+        {% include "templates/_elts/TPL_header_landing.twig" %}
+        <div class="main-container">
+            {% if squel.eligibleSatellite and squel.version.comeFromCampaign %}
+                {% if not request.getQuery('getLanding') %}
+                    <div id="logo-test" class="text-center" style="margin-left: 0%; margin-top: 95px;">
+                        <img src="{{ config.base.urlAssets }}img/app/logo_landing.png" alt="Logo {{ config.base.siteName }}">
+                    </div>
+                {% endif %}
+                <div id="test-container" class="main-wrap" style="display: none;">
+            {% else %}
+                <div id="test-container">
+            {% endif %}
+
+            {% if squel.infoUser.browser in ['firefox'] %}
+                {% include "landings/tutos/"~squel.infoUser.browser~".twig" %}
+            {% endif %}
+
+            {% block content %}{% endblock %}
+
+                </div> {# End id="test-container" #}
+        </div>
+
+    </body>
+{% endblock %}

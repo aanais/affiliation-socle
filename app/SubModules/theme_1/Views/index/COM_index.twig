@@ -1,0 +1,35 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{% block content %}
+
+    {% if config.base.pubHome and config.base.pubHome.active == true %}
+        <div class="addHome container text-center">
+            {{ config.base.pubHome.valueHome |raw }}
+        </div>
+    {% endif %}
+    <h1 class="home_title">{{ t('strings.home_title') }}</h1>
+    {% for article in articles %}
+        <section class="rub_box">
+            <article class="rub_box_item rub_box_infos">
+                <h2 class="rub_box_title">
+                    <span class="icon icon_category icon_{{ article.slug }}"></span>
+                    {{ article.title }}
+                </h2>
+
+                <div class="rub_box_desc">{{ article.content[0].value | raw }}</div>
+                <a class="rub_box_link" href="{{ t('routes./article.translation') }}/{{ article.slug }}"></a>
+            </article>
+            <div class="rub_box_item rub_box_accounts">
+                <div class="rub_box_accounts_item other_accounts">
+                    <img src="{{ urlApi~article.image.url }}">
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+
+    {% if config.base.pubHome and config.base.pubHome.active == true %}
+        <div class="addHome container text-center">
+            {{ config.base.pubHome.valueHome |raw }}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{# Title #}
+{% block title %}
+    <title>{{ config.base.siteName }} - 404 Page not found</title>
+{% endblock %}
+
+{# Favicon #}
+{% block favicon %}
+    {% include "templates/_elts/TPL_favicon.twig" %}
+{% endblock %}
+
+{# Fonts #}
+{% block fonts %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+{% endblock %}
+
+{# Styles #}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/base-vendors.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/common.css">
+    <link rel="stylesheet" href="{{ config.base.urlAssets }}css/ceris.css">
+    {# You can add other files... #}
+{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="main-container">
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+            {% include "templates/_elts/TPL_footer.twig" %}
+        </div>
+    </body>
+{% endblock %}
+
+{# Javascript #}
+{% block javascripts %}
+    <script src="{{ config.base.urlAssets }}js/jquery.js"></script>
+    <script src="{{ config.base.urlAssets }}js/common.js"></script>
+    {# You can add other files... #}
+{% endblock %}

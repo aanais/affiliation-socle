@@ -1,0 +1,88 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ categorie.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="breadcrumb-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-home"></i>
+								<a href="#">Home</a>
+						</li>
+						<li><i class="fa fa-angle-right"></i>{{ categorie.title }}</li>
+					</ol>
+				</div>
+			</div><!-- row end -->
+		</div><!-- container end -->
+	</div>
+
+
+    <div style="background-image: url('{{ urlApi }}{{ categorie.image.cover.url }}')" class="category_bg_image"></div>
+
+    <div class="container">
+        <div class="category_container">
+            <div class="row">
+                <div class="col-md-12">
+                    <header class="category_header">
+                        <h1 class="title_h1">{{ categorie.title }}</h1>
+                        <p class="main_text">
+                            {{ categorie.content | raw}}
+                        </p>
+                    </header>
+
+                    <div class="row">
+                        {% for article in articles %}
+                            {% include 'layouts/_elts/TPL_card_posts.twig' with {'articleCat': categorie}%}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gap-20 d-none d-lg-block"></div>
+
+        {% if totalPage > 1 %}
+            <div class="row">
+                <div class="col-12">
+                    <ul class="ts-pagination">
+                        {% for item in 1..totalPage %}
+                            <li class="{% if page == item %} active {% endif %}">
+                                <a href="{{ t('routes./category.translation') }}/{{ categorie.slug }}/{{ item }}">{{ item }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="block-wrapper pb-0 pt-3">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-12">
+					<div class="banner-img">
+						{% if config.base.pubHome.active %}
+                            <div class="bann_pub">
+                                {{ config.base.pubHome.valueHome|raw }}
+                            </div>
+                        {% endif %}
+					</div>
+				</div>
+				<!-- col end -->
+			</div>
+			<!-- row  end -->
+		</div>
+		<!-- container end -->
+	</div>
+
+    <div class="gap-40 d-none d-lg-block"></div>
+
+{% endblock %}

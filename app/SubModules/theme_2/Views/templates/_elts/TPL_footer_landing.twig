@@ -1,0 +1,21 @@
+<footer class="main_footer">
+    <ul class="main_footer_nav_list">
+            {% if config.base.countryCode == "fr" %}
+                <li class="main_footer_nav_item">
+                    <a href="{{ t('routes./info/mentions.default') }}">Mentions Légales</a>
+                </li>
+            {% endif %}
+            <li class="main_footer_nav_item">
+                <a href="{{ t('routes./info/gcu.default') }}">{{ t('strings.footer.cgu') }}</a>
+            </li>
+            <li class="main_footer_nav_item">
+                <a href="{{ t('routes./info/contact.default') }}">{{ t('strings.footer.contact') }}</a>
+            </li>
+            <li class="main_footer_nav_item">
+                <a href="{{ t('routes./info/cookies.default') }}">{{ t('strings.footer.cookies') }}</a>
+            </li>
+            <li class="main_footer_nav_item">
+                <a href="{{ t('routes./info/privacy-policies.default') }}">Privacy Policies</a>
+            </li>
+        </ul>
+</footer>

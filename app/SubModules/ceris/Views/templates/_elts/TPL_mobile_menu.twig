@@ -1,0 +1,35 @@
+<div id="atbs-ceris-offcanvas-mobile" class="atbs-ceris-offcanvas js-atbs-ceris-offcanvas js-perfect-scrollbar ps">
+	<div class="atbs-ceris-offcanvas__title">
+		<h2 class="site-logo">
+            <a href="/">
+				{# {% if customization.logo_header.url %}
+                    <img src="{{ urlApi }}{{ customization.logo_header.url }}" alt="Logo {{ config.base.siteName }}">
+                {% else %}
+                    <p>{{ customization.title }}</p>
+                {% endif %} #}
+                <img src="/dist/img/ceris/logo.png" alt="Logo {{ config.base.siteName }}">
+            </a>
+        </h2>
+        <a href="#atbs-ceris-offcanvas-mobile" class="atbs-ceris-offcanvas-close js-atbs-ceris-offcanvas-close" aria-label="Close"><span aria-hidden="true">✕</span></a>
+	</div>
+
+	<div class="atbs-ceris-offcanvas__section atbs-ceris-offcanvas__section-navigation">
+		<div id="offcanvas-menu-mobile" class="menu-main-menu-container">
+            <ul id="menu-main-menu-3" class="navigation navigation--offcanvas">
+                {% for category in menu.categories %}
+                    {% if category.published %}
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                            <a href="{{ t('routes./category.translation') }}/{{ category.slug }}">{{ category.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+    </div>
+    <div class="ps__rail-y" style="top: 0px; right: 0px;">
+        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+    </div>
+</div>

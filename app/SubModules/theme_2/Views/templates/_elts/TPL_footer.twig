@@ -1,0 +1,43 @@
+<footer class="main_footer">
+    <div class="container">
+        <div class="row">
+            <div class="main_footer_logo col-md-2">
+                <a href="/">
+                    {% if customization.logo_footer %}
+                        <img src="{{ urlApi }}{{ customization.logo_footer.url }}" alt="Logo {{ config.base.siteName }}">
+                    {% elseif customization.logo_header %}
+                        <img src="{{ urlApi }}{{ customization.logo_header.url }}" alt="Logo {{ config.base.siteName }}">
+                    {% else %}
+                        <p>{{ customization.title }}</p>
+                    {% endif %}
+                </a>
+            </div>
+
+            <div class="main_footer_about col-md-10">
+                {{ customization.text_footer | raw }}
+                <hr>
+                <div class="main_footer_nav">
+                    <ul class="main_footer_nav_list">
+                        {% if config.base.countryCode == "fr" %}
+                            <li class="main_footer_nav_item">
+                                <a href="{{ t('routes./info/mentions.default') }}">Mentions Légales</a>
+                            </li>
+                        {% endif %}
+                        <li class="main_footer_nav_item">
+                            <a href="{{ t('routes./info/gcu.default') }}">{{ t('strings.footer.cgu') }}</a>
+                        </li>
+                        <li class="main_footer_nav_item">
+                            <a href="{{ t('routes./info/contact.default') }}">{{ t('strings.footer.contact') }}</a>
+                        </li>
+                        <li class="main_footer_nav_item">
+                            <a href="{{ t('routes./info/cookies.default') }}">{{ t('strings.footer.cookies') }}</a>
+                        </li>
+                        <li class="main_footer_nav_item">
+                            <a href="{{ t('routes./info/privacy-policies.default') }}">Privacy Policies</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

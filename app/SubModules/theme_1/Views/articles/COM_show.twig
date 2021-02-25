@@ -1,0 +1,84 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ article.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block other_head %}
+    {% if article.metas.metatitle %}
+        <meta name="title" content="{{ article.metas.metatitle }}">
+    {% elseif customization.metas.metatitle %}
+        <meta name="title" content="{{ customization.metas.metatitle }}">
+    {% endif %}
+    {% if article.metas.metadescription %}
+        <meta name="description" content="{{ article.metas.metadescription }}">
+    {% elseif customization.metas.metadescription %}
+        <meta name="description" content="{{ customization.metas.metadescription }}">
+    {% endif %}
+    {% if article.metas.ogtitle %}
+        <meta property="og:title" content="{{ article.metas.ogtitle }}"/>
+    {% elseif customization.metas.ogtitle %}
+        <meta property="og:title" content="{{ customization.metas.ogtitle }}"/>
+    {% endif %}
+    {% if article.metas.ogdescription %}
+        <meta property="og:description" content="{{ article.metas.ogdescription }}"/>
+    {% elseif customization.metas.ogdescription %}
+        <meta property="og:description" content="{{ customization.metas.ogdescription }}"/>
+    {% endif %}
+    {% if article.metas.ogimage %}
+        <meta property="og:image" content="{{ article.metas.ogimage }}"/>
+    {% elseif customization.metas.ogimage %}
+        <meta property="og:image" content="{{ customization.metas.ogimage }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="category_title">
+        {{ article.title }}
+        <span class="category_title_logo"
+              style="background-image: url('{{ term.getCustomFields.illustration }}')"></span>
+    </h1>
+    {% if config.base.pubHome and config.base.pubHome.active == true %}
+        <div class="addHome container text-center ">
+            {{ config.base.pubHome.valueHome |raw }}
+        </div>
+    {% endif %}
+
+    <section class="article_box">
+        <div class="article_intro article_step_desc">
+            {{ term.getCustomFields.introduction | raw }}
+        </div>
+        <div>
+            {% set count = 1 %}
+            {% for content in article.content %}
+                {% if content.__component == 'fields.text' %}
+                    <article class="article_step">
+                        <h2 class="article_step_title">
+                            <div class="icon icon_bubble">
+                                <span>
+                                    {{ count }}
+                                </span>
+                            </div>
+                        </h2>
+                        <div class="article_step_desc">
+                            {{ content.value|raw }}
+                        </div>
+                    </article>
+                    {% set count = count + 1 %}
+                {% elseif content.__component == 'fields.image' %}
+                    <img src="{{ urlApi~content.cover.url }}" alt="{{ urlApi~content.image.url }}"/>
+                {% elseif content.__component == 'fields.button' %}
+                    <div class="custom_btn_1">
+                        <a href="{{ content.link }}" target="_blank" rel="noopener">{{ content.title }}</a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    {% if config.base.pubHome and config.base.pubHome.active == true %}
+        <div class="addHome container text-center">
+            {{ config.base.pubHome.valueHome |raw }}
+        </div>
+    {% endif %}
+{% endblock %}

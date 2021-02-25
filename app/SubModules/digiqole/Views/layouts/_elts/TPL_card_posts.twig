@@ -1,0 +1,19 @@
+<div class="col-md-6">
+	<div class="post-block-style clearfix">
+        <div class="post-thumb">
+		    <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">
+				<img class="img-fluid" src="{{ urlApi }}{{ article.image.url }}" alt="">
+	        </a>
+			<div class="grid-cat">
+				<a class="post-cat tech" href="{{ t('routes./category.translation') }}/{{ article.categories[0].slug }}" style="background-color: {{ article.categories[0].colors.background }};">{{ article.categories[0].title }}</a>
+		    </div>
+		</div>
+
+		<div class="post-content">
+			<h2 class="post-title title-md">
+			    <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">{{ article.title }}</a>
+			</h2>
+			{{ article.content[0].value | raw }}
+		</div><!-- Post content end -->
+	</div>
+</div>

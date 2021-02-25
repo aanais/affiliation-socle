@@ -1,0 +1,56 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ categorie.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="breadcrumbs_container">
+        <div class="container">
+            <ul class="breadcrumbs">
+                <li><a href="/">Accueil</a></li>
+                <li><span>{{ categorie.title }}</span></li>
+            </ul>
+        </div>
+    </div>
+
+    {% if categorie.image.cover.url %}
+        <div style="background-image: url('{{ urlApi }}{{ categorie.image.cover.url }}')" class="category_bg_image"></div>
+    {% endif %}
+
+    <div class="container">
+        <div class="category_container {% if categorie.image.cover.url %}with_bg{% endif %}">
+            <div class="row">
+                <div class="col-md-12">
+                    <header class="category_header">
+                        <h1 class="title_h1">{{ categorie.title }}</h1>
+                        <p class="main_text">
+                            {{ categorie.content | raw}}
+                        </p>
+                    </header>
+
+                    <div class="row">
+                        {% for item in articles %}
+                            {% include 'layouts/_elts/TPL_card_posts.twig' with {'articleCat': categorie, 'link': 'article'}%}
+                        {% endfor %}
+                    </div>
+                    {% if totalPage > 1 %}
+                        <div class="pagination-container">
+                            <ul class="spagination">
+                                {% for item in 1..totalPage %}
+                                <li class="{% if page == item %} active {% endif %}">
+                                    <a href="{{ t('routes./category.translation') }}/{{ categorie.slug }}/{{ item }}">{{ item }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

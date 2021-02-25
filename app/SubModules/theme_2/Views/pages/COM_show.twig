@@ -1,0 +1,92 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ page.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block other_head %}
+    {% if page.metas.metatitle %}
+        <meta name="title" content="{{ page.metas.metatitle }}">
+    {% elseif customization.metas.metatitle %}
+        <meta name="title" content="{{ customization.metas.metatitle }}">
+    {% endif %}
+    {% if page.metas.metadescription %}
+        <meta name="description" content="{{ page.metas.metadescription }}">
+    {% elseif customization.metas.metadescription %}
+        <meta name="description" content="{{ customization.metas.metadescription }}">
+    {% endif %}
+    {% if page.metas.ogtitle %}
+        <meta property="og:title" content="{{ page.metas.ogtitle }}"/>
+    {% elseif customization.metas.ogtitle %}
+        <meta property="og:title" content="{{ customization.metas.ogtitle }}"/>
+    {% endif %}
+    {% if page.metas.ogdescription %}
+        <meta property="og:description" content="{{ page.metas.ogdescription }}"/>
+    {% elseif customization.metas.ogdescription %}
+        <meta property="og:description" content="{{ customization.metas.ogdescription }}"/>
+    {% endif %}
+    {% if page.metas.ogimage %}
+        <meta property="og:image" content="{{ page.metas.ogimage }}"/>
+    {% elseif customization.metas.ogimage %}
+        <meta property="og:image" content="{{ customization.metas.ogimage }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="breadcrumbs_container">
+        <div class="container">
+            <ul class="breadcrumbs">
+                <li><a href="/">Accueil</a></li>
+                {% if page.categories %}
+                    <li><a href="{{ t('routes./category.translation') }}/{{ page.categories[0].slug }}">{{ page.categories[0].title }}</a></li>
+                {% endif %}
+                <li><span>{{ page.title }}</span></li>
+            </ul>
+        </div>
+    </div>
+
+    {% if page.image.url %}
+        <div style="background-image: url('{{ urlApi }}{{ page.image.url }}')" class="category_bg_image"></div>
+    {% endif %}
+
+    <div class="container">
+        <div class="category_container {% if page.image.url %}with_bg{% endif %}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="article_container">
+                        {% if page.categories %}
+                            <span class="label_category"
+                                  style="background-color: {{ page.categories[0].colors.background }}">
+                            {{ page.categories[0].title }}
+                        </span>
+                        {% endif %}
+                        <h1 class="title_h1">{{ page.title }}</h1>
+                        {% if config.base.pubHome.active %}
+                            <div class="bann_pub">
+                                {{ config.base.pubHome.valueHome|raw }}
+                            </div>
+                        {% endif %}
+                        <div class="body_page">
+                            {% for content in page.content %}
+                                {% if content.__component == 'fields.text' %}
+                                    {{ content.value|raw }}
+                                {% elseif content.__component == 'fields.image' %}
+                                    <img src="{{ urlApi }}{{ content.cover.url }}"/>
+                                {% elseif content.__component == 'fields.button' %}
+                                    <a href="{{ content.link }}" target="_blank">
+                                        <span>{{ content.title }}</span>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

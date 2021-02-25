@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="21.051" viewBox="0 0 12 21.051">
+    <defs>
+        <style>
+            .arrow-white-1{fill:#fff}
+        </style>
+    </defs>
+    <g id="ARROW" transform="rotate(90 70.729 -11.992)">
+        <path id="Tracé_327" d="M11.568 11.568l-9.051 9.051a1.474 1.474 0 0 1-2.085-2.084l8.009-8.009L.432 2.517A1.474 1.474 0 0 1 2.517.432l9.052 9.052a1.474 1.474 0 0 1 0 2.084z" class="arrow-white-1" data-name="Tracé 327" transform="rotate(-90 70.729 -11.993)"/>
+    </g>
+</svg>

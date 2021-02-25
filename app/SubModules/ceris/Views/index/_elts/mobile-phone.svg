@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26.275" height="45.603" viewBox="0 0 26.275 45.603">
+    <defs>
+        <style>
+            .mobile-1{fill:#fff}
+        </style>
+    </defs>
+    <g id="prefix__mobile-phone" transform="translate(-108.5)">
+        <g id="prefix__Groupe_46" data-name="Groupe 46" transform="translate(108.5)">
+            <g id="prefix__Groupe_45" data-name="Groupe 45">
+                <path id="prefix__Tracé_88" d="M131.435 0H111.84a3.344 3.344 0 00-3.34 3.34v38.923a3.344 3.344 0 003.34 3.34h19.595a3.344 3.344 0 003.34-3.34V3.34a3.344 3.344 0 00-3.34-3.34zm2 36.25h-18.923a.668.668 0 000 1.336h18.927v4.676a2.006 2.006 0 01-2 2H111.84a2.006 2.006 0 01-2-2v-4.676h2a.668.668 0 000-1.336h-2V6.68h23.6zm0-30.906h-23.6v-2a2.006 2.006 0 012-2h19.595a2.006 2.006 0 012 2z" class="mobile-1" data-name="Tracé 88" transform="translate(-108.5)"/>
+            </g>
+        </g>
+        <g id="prefix__Groupe_48" data-name="Groupe 48" transform="translate(120.969 2.672)">
+            <g id="prefix__Groupe_47" data-name="Groupe 47">
+                <path id="prefix__Tracé_89" d="M251.84 30h-2.672a.668.668 0 000 1.336h2.672a.668.668 0 100-1.336z" class="mobile-1" data-name="Tracé 89" transform="translate(-248.5 -30)"/>
+            </g>
+        </g>
+        <g id="prefix__Groupe_50" data-name="Groupe 50" transform="translate(119.633 38.922)">
+            <g id="prefix__Groupe_49" data-name="Groupe 49">
+                <path id="prefix__Tracé_90" d="M235.5 437a2 2 0 102 2 2.006 2.006 0 00-2-2zm0 2.672a.668.668 0 11.668-.668.669.669 0 01-.668.668z" class="mobile-1" data-name="Tracé 90" transform="translate(-233.5 -437)"/>
+            </g>
+        </g>
+        <g id="prefix__Groupe_52" data-name="Groupe 52" transform="translate(118.529 2.678)">
+            <g id="prefix__Groupe_51" data-name="Groupe 51">
+                <ellipse id="prefix__Ellipse_5" cx=".386" cy=".771" class="mobile-1" data-name="Ellipse 5" rx=".386" ry=".771"/>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,49 @@
+{% extends "layouts/COM_layout.twig" %}
+
+{# Title #}
+{% block title %}
+    <title>{{ categorie.title }} - {{ customization.title }}</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="site-content" style="transform: none;">
+    <div class="block-heading has-block-heading-line-around">
+        <h4 class="block-heading__title">{{ categorie.title }}</h4>
+    </div>
+
+
+    {# Block Articles #}
+        <div class="atbs-ceris-block atbs-ceris-block--fullwidth atbs-ceris-block-custom-margin posts-listing-grid-no-sidebar atbs-ceris-posts--vertical-text-not-fullwidth  atbs-custom-margin-top-60">
+            <div class="container">
+                <div class="atbs-ceris-block__inner">
+                    <div class="posts-list post-list row row--space-between grid-gutter-40 items-clear-both-3">
+                        {% for article in articles %}
+                            <div class="col-sm-6 list-item">
+                                <article class="post post--vertical   ceris-post-vertical--cat-overlay post--vertical-text-not-fullwidth  ">
+                                    <div class="post__thumb ">
+                                        <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">
+                                            <img width="400" height="300" src="{{ urlApi }}{{ article.image.url }}" class="attachment-ceris-xs-4_3 size-ceris-xs-4_3 wp-post-image" alt="">
+                                        </a>
+                                        <a class="cat-8 post__cat post__cat--bg cat-theme-bg" href="{{ t('routes./category.translation') }}/{{ article.categories[0].slug }}" style="background-color: {{ article.categories[0].colors.background }};">{{ article.categories[0].title }}</a>
+                                    </div>
+                                    <div class="post__text ">
+                                        <h3 class="post__title typescale-2">
+                                            <a href="{{ t('routes./article.translation') }}/{{ article.slug }}">{{ article.title }}</a>
+                                        </h3>
+                                        <div class="post__excerpt ">
+                                            <div class="excerpt">{{ article.content[0].value | raw }}</div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {# End Block Articles #}
+</div>
+
+
+{% endblock %}

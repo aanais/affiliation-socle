@@ -1,0 +1,18 @@
+<div class="col-md-6">
+    <a class="card_article" href="{{ t('routes./'~link~'.translation') }}/{{ item.slug }}">
+        <div style="background-image: url('{{ urlApi }}{{ item.image.url }}')" class="card_article_img"></div>
+        <div class="card_article_infos">
+            {% if articleCat %}
+                <span class="card_article_infos_cat"
+                      style="background-color: {{ articleCat.colors.background }};">
+                    {{ articleCat.title }}
+                </span>
+            {% endif %}
+            <h2 class="card_article_infos_title">{{ item.title }}</h2>
+            <div class="card_article_infos_desc">
+                {# Le premier component de l'article est le texte d'intro #}
+                {{ item.content[0].value | raw }}
+            </div>
+        </div>
+    </a>
+</div>

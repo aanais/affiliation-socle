@@ -1,0 +1,302 @@
+@urlAssets: '/dist/';
+@import (optional) "./app/Common/Assets/less/configOverride";
+@import '_config';
+
+.ads {
+    display: block;
+    width: 75%;
+    margin: 25px auto;
+}
+
+.rub_box {
+    background-color: @homeBoxColor;
+    display: block;
+    display: -ms-flexbox;
+    display: flex;
+    width: 75%;
+    margin: 60px auto;
+    box-shadow: 0px 5px 10px 0px @boxShadow;
+}
+
+.rub_box_item {
+    flex: 1;
+}
+
+.rub_box_infos {
+    padding: 40px;
+    position: relative;
+}
+
+.rub_box_title {
+    font-size: 2.25em;
+    font-weight: @semibold;
+    text-align: center;
+    color: @titleRubHomepage;
+    margin-bottom: 15px;
+}
+
+.rub_box_desc {
+    font-size: 1.5em;
+    line-height: 25px;
+    line-height: 1.5em;
+    font-weight: @medium;
+    margin-bottom: 15%;
+}
+
+.rub_box_link {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: @titleRubHomepage;
+    width: 15%;
+    text-decoration: none;
+    transition: .5s ease-in-out;
+
+    &::before {
+        content: "+";
+        display: block;
+        color: @lightTextColor;
+        font-size: 5em;
+        font-weight: @bold;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: @lightTextColor;
+        background-color: #7565f7;
+        transition: .5s ease-in-out;
+    }
+}
+
+.rub_box_accounts {
+    display: inline-block;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.rub_box_accounts_item {
+    flex: 1;
+    display: inline-block;
+
+    &.other_accounts {
+        flex: 1.5;
+        display: block;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.other_accounts {
+    a {
+        flex: 1;
+        display: block;
+    }
+}
+
+.rub_box_account_item {
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        min-height: 205px;
+    }
+
+    &::after {
+        content: '';
+        background-repeat: no-repeat;
+        display: block;
+        background-image: url("@{urlAssets}img/logsrc/sprite_logo.png");
+        background-size: 450px 358px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) scale(1);
+        transition: .5s ease;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    &:hover {
+        &::after {
+            transform: translateY(-50%) scale(1.15);
+            transition: .5s ease;
+
+            @media (max-width: 767px) {
+                transform:  translateY(-50%) scale(1);
+            }
+        }
+    }
+
+
+    &#gmail {
+        background-color: #f58d82;
+        &::after {
+            background-position: -151px 0;
+            width: 89px;
+            height: 66px;
+        }
+    }
+
+    &#outlook {
+        background-color: #0072c6;
+        &::after {
+            background-position: -241px 0;
+            width: 71px;
+            height: 71px;
+        }
+    }
+
+    &#icloud {
+        background: linear-gradient(to bottom, #61c4f9, #5769d8);
+        &::after {
+            background-position: -312px 0;
+            width: 99px;
+            height: 66px;
+        }
+    }
+
+    &#facebook {
+        background-color: #758ab7;
+        &::after {
+            background-position: -79px 0;
+            width: 72px;
+            height: 73px;
+        }
+    }
+
+    &#twitter {
+        background-color: #60bcf5;
+        &::after {
+            background-position: -174px -74px;
+            width: 82px;
+            height: 70px;
+        }
+    }
+
+    &#instagram {
+        background: linear-gradient(to right, #ef5954, #c13ba2);
+        &::after {
+            background-position: -12px -73px;
+            width: 84px;
+            height: 81px;
+        }
+    }
+
+    &#spotify {
+        background-color: #64dd8e;
+        &::after {
+            background-position: -97px -74px;
+            width: 75px;
+            height: 76px;
+        }
+    }
+
+    &#soundcloud {
+        background: linear-gradient(to bottom, #ffa94b, #ff704b);
+        &::after {
+            background-position: -139px -158px;
+            width: 108px;
+            height: 48px;
+        }
+    }
+
+    &#itunes {
+        background: linear-gradient(to bottom, #ba83dc, #e9596c);
+        &::after {
+            background-position: -10px -158px;
+            width: 130px;
+            height: 43px;
+        }
+    }
+
+    &#youtube {
+        background-color: #777;
+        &::after {
+            background-position: 0 0;
+            width: 78px;
+            height: 58px;
+        }
+    }
+
+    &#vimeo {
+        background-color: #4bc5f3;
+        &::after {
+            background-position: -248px -158px;
+            width: 133px;
+            height: 43px;
+        }
+    }
+
+    &#netflix {
+        background-color: #e6e8ea;
+        &::after {
+            background-position: -259px -74px;
+            width: 154px;
+            height: 44px;
+        }
+    }
+
+    &#yahoo {
+        background-color: #6302de;
+        &::after {
+            background-position: -13px -204px;
+            width: 196px;
+            height: 29px;
+        }
+    }
+
+    &#deezer {
+        background-color: #3a3a3a;
+        &::after {
+            background-position: -206px -206px;
+            width: 119px;
+            height: 27px;
+        }
+    }
+
+    &#caf {
+        background-color: #0F6BAF;
+        &::after {
+            background-position: -9px -242px;
+            width: 89px;
+            height: 90px;
+        }
+    }
+
+    &#whatsapp {
+        background-color: #25D366;
+        &::after {
+            background-position: -340px -202px;
+            width: 75px;
+            height: 75px;
+        }
+    }
+
+    &#impots {
+        background-color: #f6f6f6;
+        &::after {
+            background-position: -103px -242px;
+            width: 120px;
+            height: 73px;
+        }
+    }
+}
+
+ // ADDS on home page
+ .addHome {margin-top: 30px;}
+  // Small devices (landscape phones, less than 768px)
+  @media (max-width: 767.98px) {.addHome { display: none;} }

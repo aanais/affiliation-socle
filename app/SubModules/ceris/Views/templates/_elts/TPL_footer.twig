@@ -1,0 +1,47 @@
+<footer class="site-footer footer-2  site-footer--inverse inverse-text">
+    <div class="site-footer__section">
+		<div class="container">
+			<div class="site-footer__section-inner text-center">
+				<div class="site-logo">
+					<a href="/">
+                        {# {% if customization.logo_footer %}
+                            <img src="{{ urlApi }}{{ customization.logo_footer.url }}" alt="Logo {{ config.base.siteName }}">
+                        {% elseif customization.logo_header %}
+                            <img src="{{ urlApi }}{{ customization.logo_header.url }}" alt="Logo {{ config.base.siteName }}">
+                        {% else %}
+                            <p>{{ customization.title }}</p>
+                        {% endif %} #}
+                        <img class="footer-logo" src="/dist/img/digiqole/logo_footer.png" alt="Logo {{ config.base.siteName }}">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="site-footer__section">
+		<div class="container">
+			<nav class="footer-menu text-center">
+                <div class="menu-footer-nav-container">
+                    <ul id="menu-footer-nav" class="navigation navigation--footer navigation--inline">
+                        {% if config.base.countryCode == "fr" %}
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                                <a href="{{ t('routes./info/mentions.default') }}">Mentions Légales</a>
+                            </li>
+                        {% endif %}
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a href="{{ t('routes./info/gcu.default') }}">{{ t('strings.footer.cgu') }}</a>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a href="{{ t('routes./info/contact.default') }}">{{ t('strings.footer.contact') }}</a>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a href="{{ t('routes./info/cookies.default') }}">{{ t('strings.footer.cookies') }}</a>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a href="{{ t('routes./info/privacy-policies.default') }}">Privacy Policies</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+		</div>
+	</div>
+</footer>
